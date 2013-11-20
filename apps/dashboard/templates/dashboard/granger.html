@@ -5,11 +5,11 @@
         <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" media="screen">
         <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet" media="screen">
         <!--<link href="{{ STATIC_URL }}css/main.css" rel="stylesheet" media="screen">-->
-
         <link href="{{ STATIC_URL }}css/index.css" rel="stylesheet" media="screen">
 
         <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 </head>
 
 <body>        
@@ -46,7 +46,7 @@
               <li class="nav-header">Analysis</li>
               <li><a href="#">Monthly Returns</a></li>
               <li><a href="#">PCA</a></li>
-              <li><a href="/granger">Granger Causality</a></li>
+              <li class="active"><a href="#">Granger Causality</a></li>
               <li class="nav-header">Resources</li>
               <li><a href="#">Primary paper</a></li>
               <li><a href="#">Other</a></li>
@@ -54,15 +54,8 @@
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
-          <div class="hero-unit">
-            <h1>Systemic Risk Dashboard</h1>
-
-            <p>
-            <br>
-            Work based on paper, <br>"Econometric measures of connectedness and systemic risk in the finance and insurance sectors". <br><br>
-			Use the tabs to the left to view the measures of connectedness between hedge funds, banks, broker/dealers, and insurance companies.</p>
-            <p><a href="#" class="btn btn-primary btn-large">Start by looking at the monthly returns data &raquo;</a></p>
-          </div>
+          This is where the d3 viz goes in.
+          {% include "dashboard/granger_viz.html" %}
         </div><!--/span-->
       </div><!--/row-->
 
