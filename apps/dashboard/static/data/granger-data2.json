@@ -1,0 +1,23 @@
+{
+ "name": "graph",
+ "children": [
+  {
+   "name": "banks",
+   "children": [
+    {
+     "name": "cluster",
+     "children": [
+      {"name": "JPMorgan", "size": 3938},
+      {"name": "CreditSuisse", "size": 3812},
+     ]
+    },
+    {
+     "name": "hfunds",
+     "children": [
+      {"name": "BridgeWater", "size": 3534}
+     ]
+    }
+   ]
+  }
+ ]
+}

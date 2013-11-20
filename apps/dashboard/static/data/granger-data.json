@@ -1,0 +1,7 @@
+[
+{"name":"flare.JPMorgan","size":90,"imports":["flare.CreditSuisse", "flare.BridgeWater"]},
+{"name":"flare.CreditSuisse","size":90,"imports":["flare.JPMorgan", "flare.BridgeWater"]},
+{"name":"flare.BridgeWater","size":90,"imports":["flare.CreditSuisse"]},
+{"name":"flare.StateFarm","size":90,"imports":["flare.JPMorgan", "flare.BridgeWater"]},
+{"name":"flare.BrokerX","size":90,"imports":["flare.CreditSuisse"]}
+]
