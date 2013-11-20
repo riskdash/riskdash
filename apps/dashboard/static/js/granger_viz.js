@@ -1,4 +1,4 @@
-var radius = 400 / 2,
+var radius = 960 / 2,
     splines = [];
 
 var cluster = d3.layout.cluster()
@@ -20,7 +20,7 @@ var vis = d3.select("#chart").append("svg")
   .append("g")
     .attr("transform", "translate(" + radius + "," + radius + ")");
 
-d3.json("/static/data/granger-data.json", function(classes) {
+d3.json("/static/data/granger-data2.json", function(classes) {
   var nodes = cluster.nodes(packages.root(classes)),
       links = packages.imports(nodes);
 
