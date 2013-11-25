@@ -20,7 +20,7 @@ var vis = d3.select("#chart").append("svg")
   .append("g")
     .attr("transform", "translate(" + radius + "," + radius + ")");
 
-d3.json("/static/data/granger-data2.json", function(classes) {
+d3.json("/static/data/granger-data_hb.json", function(classes) {
   var nodes = cluster.nodes(packages.root(classes)),
       links = packages.imports(nodes);
 

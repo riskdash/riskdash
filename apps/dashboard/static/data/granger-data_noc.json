@@ -1,0 +1,27 @@
+[
+{
+	"name":"flare.bank.JPMorgan",
+	"size":90,
+	"imports":["flare.bank.CreditSuisse", "flare.hfund.BridgeWater"]
+},
+{
+	"name":"flare.bank.CreditSuisse",
+	"size":90,
+	"imports":["flare.bank.JPMorgan", "flare.hfund.BridgeWater"]
+},
+{
+	"name":"flare.hfund.BridgeWater",
+	"size":90,
+	"imports":["flare.bank.CreditSuisse"]
+},
+{
+	"name":"flare.ins.StateFarm",
+	"size":90,
+	"imports":["flare.bank.JPMorgan", "flare.hfund.BridgeWater"]
+},
+{
+	"name":"flare.broker.BrokerX",
+	"size":90,
+	"imports":["flare.bank.CreditSuisse"]
+}
+]
