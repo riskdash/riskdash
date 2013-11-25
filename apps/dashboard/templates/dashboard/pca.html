@@ -54,28 +54,8 @@
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
-          <div class="hero-unit">
-            <p>
-            Paper Abstract: <br>
-            We propose several econometric measures of connectedness based on  principal-
-components analysis and Granger-causality networks, and apply them to the monthly
-
-returns of hedge funds, banks, broker/dealers, and insurance companies. We ﬁnd that
-
-all four sectors have become highly interrelated over the past decade, likely increasing
-
-the level of systemic risk in the ﬁnance and insurance industries through a complex and
-
-time-varying network of relationships. These measures can also identify and quantify
-
-ﬁnancial crisis periods, and seem to contain predictive power in out-of-sample tests.
-
-Our results show an asymmetry in the degree of connectedness among the four sectors,
-
-with banks playing a much more important role in transmitting shocks than other
-
-ﬁnancial institutions.</p>
-          </div>
+          {% include "dashboard/time_range.html" %}
+          {% include "dashboard/pca_viz.html" %}
         </div><!--/span-->
       </div><!--/row-->
 
