@@ -1,0 +1,356 @@
+(lp0
+S'1/0 DEVELOP MARKETS TECHNOLOGY FUND'
+p1
+aS'1/0 DEVELOP MARKETS TECHNOLOGY LTD'
+p2
+aS'1794 Commodore Fund, LP'
+p3
+aS'1794 Commodore Offshore Fund, Ltd'
+p4
+aS'1794 Event Driven Fund, L.P.'
+p5
+aS'17th Street Fund, LP'
+p6
+aS'1837 Partners L.P.'
+p7
+aS'20/20 MANAGED FUTURES VALUE FUND'
+p8
+aS'200 First Avenue North Suite 203'
+p9
+aS'2100 Capital Managed Futures Fund LP'
+p10
+aS'2100 Xenon Diversified Program'
+p11
+aS'2100 Xenon Fixed Income Program'
+p12
+aS'2100 Xenon Managed Futures Programs (2X)'
+p13
+aS'21ST CENTURY PARTNERS'
+p14
+aS'27 Equity Partners, LP'
+p15
+aS'3 Degrees Dynamic'
+p16
+aS'30 days T-Bill'
+p17
+aS'300 North Capital Long/Short Fund, LLC'
+p18
+aS'303 Energy Trading Alliance, LLC'
+p19
+aS'303 Equity Trading Group, LLC'
+p20
+aS'303 Opportunities, LLC'
+p21
+aS'360 Global Capital (QP), LP'
+p22
+aS'360 Global Capital, Ltd.'
+p23
+aS'3A Asia Fund (CHF)'
+p24
+aS'3A Asia Fund (EUR)'
+p25
+aS'3A Asia Fund (GBP)'
+p26
+aS'3A Asia Fund (USD)'
+p27
+aS'3A Asia Fund Limited'
+p28
+aS'3A Commodity Fund (USD)'
+p29
+aS'3A Gennaker Fund (EUR)'
+p30
+aS'3A Gennaker Fund (USD)'
+p31
+aS'3A Long Short Fund (CHF)'
+p32
+aS'3A Long Short Fund (EUR)'
+p33
+aS'3A Long Short Fund (USD)'
+p34
+aS'3A Multi Arbitrage Fund (CHF)'
+p35
+aS'3A Multi Arbitrage Fund (EUR)'
+p36
+aS'3A Multi Arbitrage Fund (GBP)'
+p37
+aS'3A Multi Arbitrage Fund (USD)'
+p38
+aS'3A Multi Strategy Fund (CHF)'
+p39
+aS'3A Multi Strategy Fund (EUR)'
+p40
+aS'3A Multi Strategy Fund (GBP)'
+p41
+aS'3A Multi Strategy Fund (USD)'
+p42
+aS'3A Natural Resources Fund CHF'
+p43
+aS'3A Natural Resources Fund EUR'
+p44
+aS'3A Natural Resources Fund GBP'
+p45
+aS'3A Natural Resources Fund USD'
+p46
+aS'3A Opportunity Fund (EUR)'
+p47
+aS'3A Opportunity Fund (GBP)'
+p48
+aS'3A Opportunity Fund (USD)'
+p49
+aS'3A Plus Fund Limited'
+p50
+aS'3A Structured Multi Strategy Fund (EUR)'
+p51
+aS'3A Structured Multi Strategy Fund (USD)'
+p52
+aS'3A Trading Fund EUR'
+p53
+aS'3A Trading Fund USD'
+p54
+aS'3A Windrider (EUR)'
+p55
+aS'3A Windrider (USD)'
+p56
+aS'3DPropCo Ltd'
+p57
+aS'3R LTD'
+p58
+aS'3-Sigma Value,LP'
+p59
+aS'4TH DIMENSION TRADING FUND'
+p60
+aS'788 China Fund Ltd'
+p61
+aS'788 China Smaller Cap Fund Ltd'
+p62
+aS'788 Global Asset Allocation Fund Ltd'
+p63
+aS'788 Japan Fund Ltd'
+p64
+aS'A.A.Advisors Multi Absolu'
+p65
+aS'A.A.Advisors Multi Tresorerie'
+p66
+aS'A.A.Advisors Multi Tresorerie C'
+p67
+aS'A.R.T. B Arbitrage Portfolio ($)'
+p68
+aS'A.R.T. B Arbitrage Portfolio (\x80)'
+p69
+aS'A.R.T. B Arbitrage Portfolio (CHF)'
+p70
+aS'A.R.T. C Diversified Portfolio ($)'
+p71
+aS'A.R.T. C Diversified Portfolio (\x80)'
+p72
+aS'A.R.T. D Investing Portfolio ($)'
+p73
+aS'A.R.T. D Investing Portfolio (\x80)'
+p74
+aS'A.R.T. E Credit Strategy ($)'
+p75
+aS'A.R.T. E Credit Strategy (\x80)'
+p76
+aS'A.R.T. F Equity Strategy ($)'
+p77
+aS'A.R.T. F Equity Strategy (\x80)'
+p78
+aS'A.R.T. F Equity Strategy (CHF)'
+p79
+aS'A.R.T. G Opportunistic Strategy ($)'
+p80
+aS'A.R.T. G Opportunistic Strategy (\x80)'
+p81
+aS'AAAsgard Fixed Income Fund Limited'
+p82
+aS'AARDVARK FUTURES FUND'
+p83
+aS'AARDVARK FUTURES FUND II'
+p84
+aS'Aardvark T-Bond Fund, LLC'
+p85
+aS'ABACO Financials Fund (EUR)'
+p86
+aS'ABACO Financials Fund (USD)'
+p87
+aS'ABACUS CAPITAL FUND'
+p88
+aS'Abacus Greater China Focus Fund LP'
+p89
+aS'Abacus Small Cap Growth Fund, LP'
+p90
+aS'Abba Fund LP'
+p91
+aS'Abbey Capital Macro Fund'
+p92
+aS'Abbey Global L.P.'
+p93
+aS'Abernathy Capital Preservation Fund, LP'
+p94
+aS'Abernathy Group Value Trust, LP'
+p95
+aS'ABL Capital Offshore Fund, Ltd.'
+p96
+aS'ABRAHAM & SONS L.P.'
+p97
+aS'Abraham Trading'
+p98
+aS'Abraxas Fund Limited'
+p99
+aS'Abria Diversified Arbitrage Fund Ltd.- Class B Shares'
+p100
+aS'Abria Diversified Arbitrage Fund Ltd.- Class C Shares'
+p101
+aS'Abria Diversified Arbitrage Fund Ltd.- Class E Shares'
+p102
+aS'Abria Diversified Arbitrage Fund Ltd.- Class G Shares'
+p103
+aS'Abria Diversified Arbitrage Fund Ltd.- Class J Shares'
+p104
+aS'Abria XL Segregated Portfolio Class B'
+p105
+aS'Abria XL Segregated Portfolio Class C'
+p106
+aS'Abria XL Segregated Portfolio Class E'
+p107
+aS'Abria XL Segregated Portfolio Class F'
+p108
+aS'Abria XL Segregated Portfolio Class J'
+p109
+aS'Abria XL Segregated Portfolio Class K'
+p110
+aS'Abria XL Segregated Portfolio Class X'
+p111
+aS'Abria XL Segregated Portfolio Class Y'
+p112
+aS'Abrias Solo Equity, Ltd.'
+p113
+aS'ABS Offshore SPC - Global Portfolio'
+p114
+aS'Absolute Activist Value Fund (EUR Share Class)'
+p115
+aS'Absolute Activist Value Fund (USD Share Class)'
+p116
+aS'Absolute Eagles Fund Ltd'
+p117
+aS'Absolute East West Fund (EUR Share Class)'
+p118
+aS'Absolute East West Fund (USD Share Class)'
+p119
+aS'Absolute Europe AG'
+p120
+aS'Absolute Europe Ltd'
+p121
+aS'ABSOLUTE FINANCIAL SERVICES'
+p122
+aS'Absolute Guaranteed FX - AUD Evolution Class'
+p123
+aS'Absolute Guaranteed FX - GBP Class'
+p124
+aS'Absolute Guaranteed FX - GBP Evolution Class'
+p125
+aS'Absolute Guaranteed FX - USD Class'
+p126
+aS'Absolute Guaranteed FX - USD Evolution Class'
+p127
+aS'Absolute India Fund (Euro)'
+p128
+aS'Absolute India Fund (USD)'
+p129
+aS'Absolute Invest'
+p130
+aS'Absolute Invest AG'
+p131
+aS'Absolute Macro Diversified Fund GBP'
+p132
+aS'Absolute Macro Diversified Fund USD'
+p133
+aS'Absolute Macro Diversified Fund ZEPHYR'
+p134
+aS'Absolute Managers Ltd'
+p135
+aS'Absolute Octane Fund (EUR)'
+p136
+aS'Absolute Octane Fund (JPY)'
+p137
+aS'Absolute Octane Fund (USD)'
+p138
+aS'Absolute Plus Hedged Global Commodity'
+p139
+aS'Absolute Plus Management GFI-Central Bank'
+p140
+aS'Absolute Plus Management Global Fixed Income (GFI)'
+p141
+aS'Absolute Plus Management Global LLC'
+p142
+aS'Absolute Private Equity Ltd'
+p143
+aS'Absolute Return Bond Fund Class B1 USD'
+p144
+aS'Absolute Return Bond Fund Class B2 EUR'
+p145
+aS'Absolute Return Europe Fund (EUR)'
+p146
+aS'Absolute Return Europe Fund (GBP)'
+p147
+aS'Absolute Return Europe Fund (JPY)'
+p148
+aS'Absolute Return Europe Fund (USD)'
+p149
+aS'Absolute Return Management SPC Class A CHF'
+p150
+aS'Absolute Return Management SPC Class A EURO'
+p151
+aS'Absolute Return Management SPC Class A USD'
+p152
+aS'Absolute Return Management SPC Class B CHF'
+p153
+aS'Absolute Return Management SPC Class B EURO'
+p154
+aS'Absolute Return Management SPC Class B USD'
+p155
+aS'Absolute Return Multi-Strategy Fund (SICAV) PLC - Class B EUR'
+p156
+aS'Absolute Return Multi-Strategy Fund (SICAV) PLC - Class C GBP'
+p157
+aS'Absolute Trading 1 Fund'
+p158
+aS'Absolute Trading 2 Fund'
+p159
+aS'Absolute Value Fund, LLLP'
+p160
+aS'AC Branca Classic Strategie'
+p161
+aS'AC Falcon Real Asset Fund'
+p162
+aS'AC Hedge Multistrategy Fund'
+p163
+aS'AC Okeanos Shipping Fund'
+p164
+aS'AC Pharos Fund'
+p165
+aS'AC Statistical Value Market Neutral 12 Vol Fund'
+p166
+aS'AC Statistical Value Market Neutral 7 Vol Fund'
+p167
+aS'AC Vol Opportunity MH'
+p168
+aS'ACACIA CAPITAL PARTNERS'
+p169
+aS'ACACIA GROWTH FUND'
+p170
+aS'ACACIA USA FUND'
+p171
+aS'ACACIA USA GROWTH FUND'
+p172
+aS'Acadia Fund I, LP'
+p173
+aS'Acadia Fund II, LP'
+p174
+aS'Acadia Fund II, LTD'
+p175
+aS'Access Fund LP'
+p176
+aS'Access Turkey Ltd'
+p177
+a.
