@@ -15,7 +15,7 @@ Requires: x to be a numpy array, at least two elements
 Returns: 
     (R, P):   R is the autocorrelation coefficient, P is the p-value of the statistic
 '''
-def autocorr(x, k):
+def autocorr(x, k, SE=False):
     c0 = stats.tvar(x) #sample variance
     mu = stats.tmean(x) #sample mean
     r_arr = []
@@ -36,4 +36,7 @@ def autocorr(x, k):
     SEk = np.sqrt(vark)
     tval = r_arr[-1]/SEk
     pval = 1 - stats.norm.cdf(tval)
-    return r_arr[-1], pval
+    if SE:
+        return r_arr[-1], SEk
+    else:
+        return r_arr[-1], pval

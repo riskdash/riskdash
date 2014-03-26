@@ -17,32 +17,58 @@ import MySQLdb
 import numpy as np
 from scipy import stats
 from Autocorrelation import autocorr
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 
 standardIndices = ['SP500', 'brokers', 'banks', 'insurers', 'liquid', 'illiquid']
 HFIndices_raw = ['', 'Global Macro ', 'Long/Short Equity ']
 
+
+'''
+Return a numpy array of sorted DB data for the given column name, sorted by date in chronological order
+
+inputs
+ind:  requires to be from the standard or HF indices_raw
+colName:  requires to be a column name from the indices table.  Requires to be matching in case
+
+outputs
+ROR:  numpy array of the ROR for the index
+indNew:  Cleaned index name
+'''
+def getIndData(ind, colName):
+    db = MySQLdb.connect(host = "192.168.1.15", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
+    cursor = db.cursor()
+    suffix = "Hedge Fund Index"
+    if ind in standardIndices:
+        tname = 'indices'
+        indNew = ind
+    else:
+        tname = 'hfindices'
+        indNew = ind + suffix
+    
+    sqlquery1 = "SELECT %s FROM rawdata.%s where IndexID='%s' order by Date"%(colName, tname, indNew)
+    cursor.execute(sqlquery1)
+    results = cursor.fetchall()
+    datalist = []
+    for row in results:
+        if colName!='Date':
+            datalist.append(float(row[0]))
+        else:
+            datalist.append(row[0])
+    data = np.array(datalist)
+    # disconnect from server
+    db.close()
+    return data, indNew
+
 def pullSummarizedStatistics():
-    db = MySQLdb.connect(host = "127.0.0.1", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
+    db = MySQLdb.connect(host = "192.168.1.15", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
     cursor = db.cursor()
     
     rorDataDict = {}
     suffix = "Hedge Fund Index"
     
     for ind in standardIndices+HFIndices_raw:
-        if ind in standardIndices:
-            tname = 'indices'
-            indNew = ind
-        else:
-            tname = 'hfindices'
-            indNew = ind + suffix
-        
-        sqlquery1 = "SELECT ROR FROM rawdata.%s where IndexID='%s' order by Date"%(tname, indNew)
-        cursor.execute(sqlquery1)
-        results = cursor.fetchall()
-        RORlist = []
-        for row in results:
-            RORlist.append(float(row[0]))
-        ROR = np.array(RORlist)
+        ROR, indNew = getIndData(ind, 'ROR')
         rorDataDict[indNew] = ROR
     
     outputDict = {}
@@ -71,3 +97,6 @@ def pullSummarizedStatistics():
 
 if __name__ == '__main__':
     pullSummarizedStatistics()
+
+    
+    
