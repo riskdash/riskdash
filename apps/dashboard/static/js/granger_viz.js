@@ -14,7 +14,7 @@ var line = d3.svg.line.radial()
     .radius(function(d) { return d.y; })
     .angle(function(d) { return d.x / 180 * Math.PI; });
 
-var vis = d3.select("#chart").append("svg")
+var vis = d3.select("#chart2").append("svg")
     .attr("width", radius * 2)
     .attr("height", radius * 2)
   .append("g")
