@@ -49,8 +49,39 @@
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span10">
-          {% include "dashboard/time_range.html" %}
-          {% include "dashboard/granger_viz.html" %}
+          <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Note: </strong> This page contains data that may not be up to date.
+          </div>
+          <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#stats">Summary Statistics</a></li>
+          <li><a data-toggle="tab" href="#conns">Number of Connections</a></li>
+          <li><a data-toggle="tab" href="#diagrams">Network Diagram</a></li>
+        </ul>
+
+        <div class="tab-content">
+          
+          <div class="tab-pane active" id="stats">
+              <h1>Summary Statistics for asset-weighted autocorrelations 
+                <br>
+                and linear Granger-causality relationships</h1>
+              <h4> <i>At the 5% level of statiscial significance </i> </h4>
+              {% include "dashboard/time_range.html" %}
+              {% include "dashboard/pcas_measures.html" %}
+          </div>
+          <div class="tab-pane" id="conns">
+              <h1>Number of connections as a percentage of all possible connections.</h1>
+              <h4> <i>At the 5% level of statiscial significance </i> </h4>
+                {% include "dashboard/time_range.html" %}
+                {% include "dashboard/pca_viz.html" %}
+          </div>
+          <div class="tab-pane" id="diagrams">
+              <h1>Network Diagram</h1>
+              <h4> <i>Mouse over the diagram from left to right to see bundles for each sector. </i> </h4>
+                {% include "dashboard/time_range.html" %}
+                {% include "dashboard/granger_viz.html" %}
+          </div>
+        </div>
         </div><!--/span-->
       </div><!--/row-->
 
