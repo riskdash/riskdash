@@ -49,23 +49,8 @@
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span10">
-        <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#roll-auto">Rolling Autocorrelations</a></li>
-          <li><a data-toggle="tab" href="#pca-viz">Interactive Graph</a></li>
-        </ul>
-
-        <div class="tab-content">
-          <div class="tab-pane active" id="roll-auto">
-              <h1>36-month Rolling Autocorrelations</h1>
-              {% include "dashboard/roll_auto_viz.html" %}
-          </div>
-          <div class="tab-pane" id="pca-viz">
-              <h1>Interactive Graph</h1>
                 {% include "dashboard/time_range.html" %}
                 {% include "dashboard/pca_viz.html" %}
-          </div>
-        </div>
-
         </div><!--/span-->
       </div><!--/row-->
 
