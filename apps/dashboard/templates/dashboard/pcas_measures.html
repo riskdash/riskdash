@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+<title>Table With Embedded Line Chart</title>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<style>
+table {
+  border-collapse: collapse;
+}
+th {
+  border-bottom: 2px solid #ddd;
+  padding: 8px;
+  font-weight: bold;
+}
+td {
+  padding: 8px;
+  border-top: 1px solid #ddd;
+}
+#chart {
+  padding: 0px;
+}
+.xaxislabel {
+  font-size: 9px;
+}
+</style>
+</head>
+<body>
+
+<div id="datatable"></div>
+
+<script>
+
+var rows = []
+var formatdate = d3.time.format("%b %d %Y");
+
+d3.csv("/static/data/pcas.csv", function(error, csv) {
+  csv.forEach(function(row) {
+    console.log(row.twenty);
+    rows.push(row);
+  });
+
+  var table = d3.select("#datatable").append("table");
+      thead = table.append("thead");
+      tbody = table.append("tbody");
+
+  thead.append("th").text("Sector");
+  thead.append("th").text("");
+  thead.append("th").text("PCAS 1");
+  thead.append("th").text("PCAS 1-10");
+  thead.append("th").text("PCAS 1-20");
+
+  var tr = tbody.selectAll("tr")
+      .data(rows)
+      .enter().append("tr");
+
+  var td = tr.selectAll("td")
+        .data(function(d) { return [d.firm,d.val,d.one,d.ten,d.twenty]; })
+      .enter().append("td")
+        .text(function(d) { return d; });
+
+  var width = 80,
+      height = d3.select("table")[0][0].clientHeight,
+      mx = 10,
+      radius = 2;
+
+});
+</script>
+</body>
+</html>

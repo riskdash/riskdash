@@ -49,8 +49,29 @@
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span10">
+          <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Note: </strong> This page contains data that may not be up to date.
+          </div>
+          <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#pcas">PCAS Measures</a></li>
+          <li><a data-toggle="tab" href="#pca-viz">Cumulative Risk Fraction</a></li>
+          
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane" id="pca-viz">
+              <h1>36-month rolling-window estimates of the Cumulative Risk Fraction</h1>
+              <h4> <i>This graph illustrates the fraction of total variance explaned by principal components 1-36. </i> </h4>
                 {% include "dashboard/time_range.html" %}
                 {% include "dashboard/pca_viz.html" %}
+          </div>
+          <div class="tab-pane active" id="pcas">
+              <h1>Summary Statistics for PCAS Measures</h1>
+              {% include "dashboard/time_range.html" %}
+              {% include "dashboard/pcas_measures.html" %}
+          </div>
+        </div>
         </div><!--/span-->
       </div><!--/row-->
 
