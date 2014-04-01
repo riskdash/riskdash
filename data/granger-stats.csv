@@ -1,0 +1,6 @@
+firm,corr,hf_p,brokers_p,total_p,banks_p,insurers_p,hf,brokers,total,banks,insurers
+All,0.09,,,13,,,,,1244,,
+Hedge Funds,0.23,10,13,,5,13,57,82,,31,83
+Brokers,0.23,12,17,,9,12,78,102,,55,73
+Banks,0.02,23,12,,10,9,142,74,,58,54
+Insurers,0.12,13,16,,12,16,84,102,,73,96

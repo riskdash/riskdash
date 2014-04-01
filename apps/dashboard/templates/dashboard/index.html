@@ -4,12 +4,9 @@
         <title>Systemic Risk Dashboard</title>
         <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" media="screen">
         <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet" media="screen">
-        <!--<link href="{{ STATIC_URL }}css/main.css" rel="stylesheet" media="screen">-->
 
         <link href="{{ STATIC_URL }}css/index.css" rel="stylesheet" media="screen">
-
-        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+        
 </head>
 
 <body>        
@@ -23,73 +20,76 @@
         <a class="navbar-brand" href="/">Systemic Risk Dashboard</a>
       </div>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
-
-        <p class="navbar-text pull-right">
-              <a href="#" class="navbar-link">Log In</a>
-            </p>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact</a></li>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Log In</a></li>
         </ul>
+        <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+        </form>
       </div>
     </div>
 
     <div class="container-fluid">
       <div class="row-fluid">
-        
-        <div class="span12">
-          <div class="hero-unit-2">
-            <h0>
-              <br>
-              <br>
-              <span style="background-color: #FFFFFF"><b>View real-time Systemic Risk 
-                <br>
-                in the Financial System</b>
-              <br>
-              <br>
-            </h0>
-            <h3><a href="/returns" class="btn btn-primary btn-large">Start by looking at the monthly returns data &raquo;</a></h3>
-          </div>
-        </div><!--/span-->
-      </div><!--/row-->
+        <div class="span2">
+          {% include "dashboard/nav-analytics.html" %}
+        </div>
 
-      <div class="row-fluid well">
-          <div class="hero-unit">
-          
-            <h2><b>Systemic Risk focuses on how illiquidity, insolvency, and losses propogate through connections in the financial system. </b></h2>
-            <h3>
-            We focus on four different types of institutions: brokers/dealers, hedge funds, insurance companies, and banks. 
-            <br>
-            We look at the 25 largest firms in each sector. 
-            <br>
-            <br>
-            Using publically available data, we find the monthly returns of these firms and 
-            <br>
-            apply principal components analysis and granger-causality tests.
-              <br>
-              <br>
-              <i>Visit the links below to see real-time results.</i>
-            </h3>
-            <div class="navbar">
-              <div class="centered-pills">
-               <ul class="nav nav-pills">
-                <li><a href="/returns">Monthly Returns</a></li>
-                <li><a href="/pca">PCA</a></li>
-                <li><a href="/granger">Granger Causality</a></li>
-               </ul>
-             </div>
+        <div class="span10">
+          <ol class="breadcrumb">
+            <li class="active"><a href="/">Home</a></li>
+          </ol>
+          <h1><b> Systemic Risk Dashboard </b></h1>
+          <h3> Overview and latest statistics </h3>
+          <hr>
+
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="alert alert-warning alert-dismissable">
+                <strong>Updated: </strong> 31 Mar 2014 16:30:00 GMT
+              </div>
+              <div class="row">
+                <div class="span4">
+                  <div id="market-gauge" style="width:400px; height:320px"></div>
+                </div>
+                <div class="span4">
+                  <div id="credit-gauge" style="width:400px; height:320px"></div>
+                </div>
+                <div class="span4">
+                  <div id="liquidity-gauge" style="width:400px; height:320px"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="span4">
+                  <div id="volatility-gauge" style="width:400px; height:320px"></div>
+                </div>
+                <div class="span4">
+                  <div id="industry-gauge" style="width:400px; height:320px"></div>
+                </div>
+                <div class="span4">
+                  <div id="event-gauge" style="width:400px; height:320px"></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="alert alert-warning alert-dismissable">
-            This website is still under construction.
-          </div>
-    </div>
-  </div>
-    <hr>
+        </div>
+      </div>
+      <hr>
       <footer>
         <p>Created by Ayesha Bose and Hanwen Xu, under Andrew W. Lo.</p>
       </footer>
 
     </div><!--/.fluid-container-->
+
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+    <script src="{{ STATIC_URL }}js/raphael.2.1.0.min.js"></script>
+    <script src="{{ STATIC_URL }}js/justgage.1.0.1.min.js"></script>
+    <script src="{{ STATIC_URL }}js/market-gauge.js"></script>
+    <script src="{{ STATIC_URL }}js/credit-gauge.js"></script>
+    <script src="{{ STATIC_URL }}js/liquidity-gauge.js"></script>
+    <script src="{{ STATIC_URL }}js/volatility-gauge.js"></script>
+    <script src="{{ STATIC_URL }}js/industry-gauge.js"></script>
+    <script src="{{ STATIC_URL }}js/event-gauge.js"></script>
 </body>
 </html>
