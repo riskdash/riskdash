@@ -81,17 +81,28 @@
               <div class="row-fluid">
                 <!-- Single button -->
                 <div class="btn-group">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Action <span class="caret"></span>
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Select an analytic to view <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li class="nav-header">Network Measures</li>
+                    <li><a href="#">Monthly Returns</a></li>
+                    <li><a href="#">PCA</a></li>
+                    <li><a href="#granger">Granger Causality</a></li>
                   </ul>
                 </div>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default">
+                    Add another analytic
+                  </button>
+                </div>
+                <div id="#granger">
+                    <h1>Network Diagram</h1>
+                  <h4> <i>Mouse over the diagram from left to right to see bundles for each sector. </i> </h4>
+                    {% include "dashboard/time_range.html" %}
+                    {% include "dashboard/granger_viz.html" %}
+                </div>
+
             </div>
           </div>
         </div>
