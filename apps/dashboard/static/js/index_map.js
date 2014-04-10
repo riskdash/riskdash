@@ -1,10 +1,10 @@
 var map = new Datamap({
     element: document.getElementById('container'),
     fills: {
-        HIGH: 'red',
-        LOW: 'green',
-        MEDIUM: 'yellow',
-        defaultFill: 'green'
+        HIGH: '#e74c3c',
+        MEDIUM: '#f39c12',
+        LOW: '#18bc9c',
+        defaultFill: '#18bc9c'
     },
     data: {
         IRL: {
@@ -21,7 +21,13 @@ var map = new Datamap({
         MEX: {
             fillKey:'HIGH'
         },
+        EGY: {
+            fillKey:'HIGH'
+        },
         IND: {
+            fillKey:'MEDIUM'
+        },
+        PER: {
             fillKey:'MEDIUM'
         },
     }
