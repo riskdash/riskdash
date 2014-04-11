@@ -17,12 +17,11 @@ import MySQLdb
 import numpy as np
 from scipy import stats
 from Autocorrelation import autocorr
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
+import pickle
 
 standardIndices = ['SP500', 'brokers', 'banks', 'insurers', 'liquid', 'illiquid']
 HFIndices_raw = ['', 'Global Macro ', 'Long/Short Equity ']
-
+IPADDR = "127.0.0.1"
 
 '''
 Return a numpy array of sorted DB data for the given column name, sorted by date in chronological order
@@ -36,7 +35,7 @@ ROR:  numpy array of the ROR for the index
 indNew:  Cleaned index name
 '''
 def getIndData(ind, colName):
-    db = MySQLdb.connect(host = "192.168.1.15", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
+    db = MySQLdb.connect(host = IPADDR, port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
     cursor = db.cursor()
     suffix = "Hedge Fund Index"
     if ind in standardIndices:
@@ -61,7 +60,7 @@ def getIndData(ind, colName):
     return data, indNew
 
 def pullSummarizedStatistics():
-    db = MySQLdb.connect(host = "192.168.1.15", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
+    db = MySQLdb.connect(host = IPADDR, port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
     cursor = db.cursor()
     
     rorDataDict = {}
@@ -92,7 +91,9 @@ def pullSummarizedStatistics():
                   rho_arr[2], pval_arr[2]]
         outputDict[ind] = output
         print output
-        
+    
+    Dateoutput = open('SummaryStatistic.pkl', 'wb')
+    pickle.dump(outputDict, Dateoutput)
     return outputDict
 
 if __name__ == '__main__':

@@ -4,11 +4,11 @@ Created on Dec 8, 2013
 @author: Hanwen Xu
 '''
 
-import MySQLdb, csv, pickle as pkl
+import csv, pickle as pkl
 import _mysql_exceptions
-import datetime as dt, time, calendar
-import locale
+import locale, time
 import sys
+from DatabaseTools import *
 locale.setlocale(locale.LC_TIME  , "usa")
 
 '''
@@ -19,25 +19,10 @@ LiqHFIndWts = {'Dedicated Short Bias': 0.5, 'Equity Market Neutral':5.0, 'Manage
 IllHFIndWts = {'Convertible Arbitrage':3.0, 'Emerging Markets': 5.0, 'Event Driven Risk Arbitrage': 20.0, 'Fixed Income Arbitrage':8.0,
                'Managed Futures': 11.0}
 
-def checkDBConnection():
-    
-    try:
-        db = MySQLdb.connect(host = "127.0.0.1", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
-        cursor = db.cursor()
-        cursor.execute("SELECT VERSION()")
-    
-        # Fetch a single row using fetchone() method.
-        data = cursor.fetchone()
-        
-        print "Database version : %s " % data
-        
-        # disconnect from server
-        db.close()
-        return True
-    except:
-        return False
+
 
 def pullHFIndxCSV():
+    
     with open('CS_ALL.csv', 'rb') as csvfile:
         reader = csv.reader(csvfile)
         row = reader.next()
@@ -114,15 +99,6 @@ def fillHFIndxDatabase():
                 db.rollback()
     db.close()
 
-'''
-Return the parsed date
-'''
-def formatDate(date_raw):
-    date = dt.datetime.strptime(date_raw, "%x")
-    #print date
-    date_clean = date.strftime("%Y-%m-%d")
-    return date_clean
-
 
 '''
 Given a CSVfile, database hook, and cursor, update the hedge fund returns
@@ -195,14 +171,6 @@ def pullHFCSV():
         HFCSVparse(csvfile, db, cursor)
 
     db.close()
-    
-
-def addMonths(sourcedate, months):
-    month = sourcedate.month - 1 + months
-    year = sourcedate.year + month/12
-    month = month%12 +1
-    day = calendar.monthrange(year,month)[1]
-    return dt.date(year,month,day)
 
 '''
 Get the index WAV of the given table name, date, and cursor to database
@@ -272,7 +240,7 @@ def createIndexTables():
     db = MySQLdb.connect(host = "127.0.0.1", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
     cursor = db.cursor()
     
-    tableNames = ['brokers', 'banks', 'insurers', 'liquid', 'illiquid']
+    TABLENAMES = ['brokers', 'banks', 'insurers', 'liquid', 'illiquid']
     
     currentYear = int(time.strftime('%Y'))
     currentMonth = int(time.strftime('%m'))
@@ -287,7 +255,7 @@ def createIndexTables():
     initMonth = 1
     initDate = dt.date(1994, 1, 31)
     
-    for tName in tableNames:
+    for tName in TABLENAMES:
         NAV = 100.0
         ROR = 0.0
         updateIndicesDB(cursor, db, tName, initDate, ROR, NAV)
@@ -306,7 +274,11 @@ def createIndexTables():
             oldWAV = newWAV
             updateIndicesDB(cursor, db, tName, iDate, ROR*100, NAV)
             iDate = addMonths(iDate, 1)
-        
+
+'''
+'''
+
+
 
 def main():
     assert checkDBConnection()
@@ -315,8 +287,11 @@ def main():
     print "Finished updating HF Indices"
     #pullHFCSV()
     print "Finished updating Hedge Funds"
-    createIndexTables()
+    #createIndexTables()
     print "Finished updating index tables"
+    #printPermnos()
+    loadInstitutionCSVs()
+    
     
 if __name__ == '__main__':
     main()
