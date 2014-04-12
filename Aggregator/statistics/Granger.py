@@ -6,9 +6,9 @@ Created on Mar 27, 2014
 
 import MySQLdb
 import numpy as np
-from scipy import stats
-from Autocorrelation import autocorr
+import pickle
 import datetime as dt
+from HacRegression import HAC_Regression
 from DatabaseFiller.DatabaseTools import addMonths
 '''
 Get the tickers of all the companies we want to analyze with Granger Causality for a given date
@@ -24,8 +24,9 @@ def getNames(aDate):
     
     cYear = int(aDate.strftime('%Y'))
     cMonth = int(aDate.strftime('%m'))
+    window = 36
     
-    bDate = addMonths(aDate, -37)
+    bDate = addMonths(aDate, -1*window-1)
     
     
     #store the ticker and common name for stocks, 
@@ -64,36 +65,68 @@ def getNames(aDate):
             cursor.execute(sqlQuery2)
             nameResults = cursor.fetchall()
             RORdata = []
-            
-            for i in xrange(36):
+            print len(nameResults)
+            for i in xrange(window):
                 if i>=len(nameResults)-1:
                     RORdata.append(0)
                 elif t=='hedgefunds':
-                    RORdata.append(nameResults[i][0])
+                    RORdata.append(round(nameResults[i][0], 5))
                 else:
-                    NAV = nameResults[i][0]
-                    NAV2 = nameResults[i+1][0]
+                    NAV = float(nameResults[i][0])
+                    NAV2 = float(nameResults[i+1][0])
                     ROR = 100.0*(NAV2-NAV)/NAV
-                    RORdata.append(ROR)
-            dataArray.append(RORdata)
-    npDArray = np.array(dataArray)
-    npNArray = np.array(nameArray)
+                    RORdata.append(round(ROR, 5))
+            RORdata.reverse()
+            dataArray.append(RORdata[1:])
+    npDArray = dataArray
+    npNArray = nameArray
+    print npDArray
+    Dataoutput = open('GrangerData.pkl', 'wb')
+    Nameoutput = open('GrangerNames.pkl', 'wb')
+    pickle.dump(npDArray, Dataoutput)
+    pickle.dump(npNArray, Nameoutput)
     return npNArray, npDArray
 
 '''
 return a matrix with p-values of granger causality metrics
+Each X value will be the input instituion returns, Y is the output
+
 '''
 def grangerCausality(npNArray, npDArray):
     
     
-    for rowi in npDArray:
-        for rowj in npDArray:
-            pass
+    for i, Xraw in enumerate(npDArray):
+        #print i, Xraw
+        for j, Yraw in enumerate(npDArray):
+            if i!=j:
+                #form the response in the regression equation
+                y = np.array(Yraw[1:])
+                #form the regressors
+                X1 = np.array([Xraw[:-1], Yraw[:-1]])
+                X = X1.T
+                #print X, y
+                try:
+                    olsModel, V_hat = HAC_Regression(y, X, 0.1)
+                    if i==1 and j==2:
+                        olsModel.summary()
+                except:
+                    print "position %d and %d have a singular matrix"%(i, j)
+                
+            
+            #perform heteroscedastic and autocorrelation consistent regression
+            
+            
+            
     pass
 
   
 if __name__ == '__main__':
     #pullSummarizedStatistics()
     #genRollAutocorr()
-    aDate = dt.datetime(2013, 12, 1)
-    getNames(aDate)
+    #aDate = dt.datetime(2013, 12, 1)
+    #getNames(aDate)
+    Dataoutput = open('GrangerData.pkl', 'rb')
+    Nameoutput = open('GrangerNames.pkl', 'rb')
+    npNArray = pickle.load(Nameoutput)
+    npDArray = pickle.load(Dataoutput)
+    grangerCausality(npNArray, npDArray)

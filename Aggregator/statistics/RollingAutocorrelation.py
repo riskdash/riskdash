@@ -18,6 +18,7 @@ HFIndices_raw = ['', 'Global Macro ', 'Long/Short Equity ']
 
 
 '''
+Returns the rolling autocorrelation
 '''
 def genRollAutocorr():
     output = {}
