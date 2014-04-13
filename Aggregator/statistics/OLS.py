@@ -77,10 +77,9 @@ class ols:
         self.sse = dot(self.e,self.e)/self.df_e         # SSE
         self.se = sqrt(diagonal(self.sse*self.inv_xx))  # coef. standard errors
         self.t = self.betas / self.se                       # coef. t-statistics
-        #print self.t
-        #print self.df_e
-        #self.p = (1-stats.t.cdf(abs(self.t), self.df_e)) * 2    # coef. p-values
-        self.p = (1-stats.t.cdf(abs(self.t), self.df_e)) * 2
+
+        self.p = (1-stats.t.cdf(abs(self.t), self.df_e)) * 2    # coef. p-values
+
 
         self.R2 = 1 - self.e.var()/self.y.var()         # model R-squared
         self.R2adj = 1-(1-self.R2)*((self.nobs-1)/(self.nobs-self.ncoef))   # adjusted R-square

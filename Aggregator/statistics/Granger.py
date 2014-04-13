@@ -94,9 +94,10 @@ Each X value will be the input instituion returns, Y is the output
 '''
 def grangerCausality(npNArray, npDArray):
     
-    
+    p_values = []
     for i, Xraw in enumerate(npDArray):
         #print i, Xraw
+        row_pvalues = []
         for j, Yraw in enumerate(npDArray):
             if i!=j:
                 #form the response in the regression equation
@@ -109,15 +110,15 @@ def grangerCausality(npNArray, npDArray):
                     olsModel, V_hat = HAC_Regression(y, X, 0.1)
                     if i==1 and j==2:
                         olsModel.summary()
+                    row_pvalues.append(olsModel.p[1])
                 except:
                     print "position %d and %d have a singular matrix"%(i, j)
-                
-            
+                    row_pvalues.append(1)
+            else:
+                row_pvalues.append(1)
+        p_values.append(row_pvalues)
             #perform heteroscedastic and autocorrelation consistent regression
-            
-            
-            
-    pass
+    return p_values
 
   
 if __name__ == '__main__':
@@ -129,4 +130,4 @@ if __name__ == '__main__':
     Nameoutput = open('GrangerNames.pkl', 'rb')
     npNArray = pickle.load(Nameoutput)
     npDArray = pickle.load(Dataoutput)
-    grangerCausality(npNArray, npDArray)
+    p_value_matrix = grangerCausality(npNArray, npDArray)
