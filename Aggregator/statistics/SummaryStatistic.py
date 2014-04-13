@@ -34,7 +34,7 @@ outputs
 ROR:  numpy array of the ROR for the index
 indNew:  Cleaned index name
 '''
-def getIndData(ind, colName):
+def getIndData(ind, colName, aDate="19940101", bDate = "20140101"):
     db = MySQLdb.connect(host = IPADDR, port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
     cursor = db.cursor()
     suffix = "Hedge Fund Index"
@@ -45,7 +45,7 @@ def getIndData(ind, colName):
         tname = 'hfindices'
         indNew = ind + suffix
     
-    sqlquery1 = "SELECT %s FROM rawdata.%s where IndexID='%s' order by Date"%(colName, tname, indNew)
+    sqlquery1 = "SELECT %s FROM rawdata.%s where IndexID='%s' and Date>'%s' and Date<'%s' order by Date"%(colName, tname, indNew, aDate, bDate)
     cursor.execute(sqlquery1)
     results = cursor.fetchall()
     datalist = []
