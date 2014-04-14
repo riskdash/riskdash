@@ -2,64 +2,42 @@
 <html>
 <meta charset="utf-8">
 <head>
-<title>Table With Embedded Line Chart</title>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<style>
-table {
-  border-collapse: collapse;
-}
-th {
-  border-bottom: 2px solid #ddd;
-  padding: 8px;
-  font-weight: bold;
-}
-td {
-  padding: 8px;
-  border-top: 1px solid #ddd;
-}
-#chart {
-  padding: 0px;
-}
-.xaxislabel {
-  font-size: 9px;
-}
-</style>
 </head>
 <body>
 
-<table>
-  <tr>
+<table class="table table-hover table-bordered table-condensed">
+  <tr class="active">
       <th> </th>
-      <th> Ann. Mean </th>
-      <th> Ann. SD </th>
-      <th> Min </th>
-      <th> Max </th>
-      <th> Median </th>
-      <th> Skewness </th>
-      <th> Kurtosis </th>
-      <th> p1 </th>
-      <th> p_value (p1) </th>
-      <th> p2 </th>
-      <th> p_value (p2) </th>
-      <th> p3 </th>
-      <th> p_value (p3) </th>
+      <th align="center"> Ann. Mean </th>
+      <th align="center"> Ann. SD </th>
+      <th align="center"> Min </th>
+      <th align="center"> Max </th>
+      <th align="center"> Median </th>
+      <th align="center"> Skewness </th>
+      <th align="center"> Kurtosis </th>
+      <th align="center"> p1 </th>
+      <th align="center"> p_value (p1) </th>
+      <th align="center"> p2 </th>
+      <th align="center"> p_value (p2) </th>
+      <th align="center"> p3 </th>
+      <th align="center"> p_value (p3) </th>
     </tr>
     {% for s in stats %}  
     <tr>
-    <td>{{ s.sector }}</td>
-    <td>{{ s.ann_mean }}</td>
-    <td>{{ s.ann_sd }}</td>
-    <td>{{ s.minimum }}</td>
-    <td>{{ s.maximum }}</td>
-    <td>{{ s.median }}</td>
-    <td>{{ s.skewness }}</td>
-    <td>{{ s.kurtosis }}</td>
-    <td>{{ s.p1 }}</td>
-    <td>{{ s.p1_value }}</td>
-    <td>{{ s.p2 }}</td>
-    <td>{{ s.p2_value }}</td>
-    <td>{{ s.p3 }}</td>
-    <td>{{ s.p3_value }}</td>
+    <td class="active" align="right"><b>{{ s.sector }}</b></td>
+    <td align="center">{{ s.ann_mean }}</td>
+    <td align="center">{{ s.ann_sd }}</td>
+    <td align="center">{{ s.minimum }}</td>
+    <td align="center">{{ s.maximum }}</td>
+    <td align="center">{{ s.median }}</td>
+    <td align="center">{{ s.skewness }}</td>
+    <td align="center">{{ s.kurtosis }}</td>
+    <td align="center">{{ s.p1 }}</td>
+    <td align="center">{{ s.p1_value }}</td>
+    <td align="center">{{ s.p2 }}</td>
+    <td align="center">{{ s.p2_value }}</td>
+    <td align="center">{{ s.p3 }}</td>
+    <td align="center">{{ s.p3_value }}</td>
     </tr>
 {% endfor %}
 </table>
