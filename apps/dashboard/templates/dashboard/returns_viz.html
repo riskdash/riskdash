@@ -27,48 +27,44 @@ td {
 </head>
 <body>
 
-<div id="datatable"></div>
+<table>
+  <tr>
+      <th> </th>
+      <th> Sample Size </th>
+      <th> Ann. Mean </th>
+      <th> Ann. SD </th>
+      <th> Min </th>
+      <th> Max </th>
+      <th> Median </th>
+      <th> Skewness </th>
+      <th> Kurtosis </th>
+      <th> p1 </th>
+      <th> p_value (p1) </th>
+      <th> p2 </th>
+      <th> p_value (p2) </th>
+      <th> p3 </th>
+      <th> p_value (p3) </th>
+    </tr>
+    {% for s in stats %}  
+    <tr>
+    <td>{{ s.sector }}</td>
+    <td>{{ s.sample_size }}</td>
+    <td>{{ s.ann_mean }}</td>
+    <td>{{ s.ann_sd }}</td>
+    <td>{{ s.minimum }}</td>
+    <td>{{ s.maximum }}</td>
+    <td>{{ s.median }}</td>
+    <td>{{ s.skewness }}</td>
+    <td>{{ s.kurtosis }}</td>
+    <td>{{ s.p1 }}</td>
+    <td>{{ s.p1_value }}</td>
+    <td>{{ s.p2 }}</td>
+    <td>{{ s.p2_value }}</td>
+    <td>{{ s.p3 }}</td>
+    <td>{{ s.p3_value }}</td>
+    </tr>
+{% endfor %}
+</table>
 
-<script>
-
-var rows = []
-var formatdate = d3.time.format("%b %d %Y");
-
-d3.csv("/static/data/dortmund.csv", function(error, csv) {
-  csv.forEach(function(row) {
-    console.log(row.mean);
-    rows.push(row);
-  });
-
-  var table = d3.select("#datatable").append("table");
-      thead = table.append("thead");
-      tbody = table.append("tbody");
-
-  thead.append("th").text("");
-  thead.append("th").text("Mean (%)");
-  thead.append("th").text("SD (%)");
-  thead.append("th").text("Min (%)");
-  thead.append("th").text("Max (%)");
-  thead.append("th").text("Median (%)");
-  thead.append("th").text("Skew");
-  thead.append("th").text("Kurtosis");
-  thead.append("th").text("First-order Autocorr.");
-
-  var tr = tbody.selectAll("tr")
-      .data(rows)
-      .enter().append("tr");
-
-  var td = tr.selectAll("td")
-        .data(function(d) { return [d.firm, d.mean, d.sd, d.min, d.max, d.median, d.skew, d.kurt, d.autocorr]; })
-      .enter().append("td")
-        .text(function(d) { return d; });
-
-  var width = 80,
-      height = d3.select("table")[0][0].clientHeight,
-      mx = 10,
-      radius = 2;
-
-});
-</script>
 </body>
 </html>

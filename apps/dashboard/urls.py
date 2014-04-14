@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
+from apps.dashboard import views
 
 urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name='dashboard/index.html')),
@@ -7,5 +8,5 @@ urlpatterns = patterns('',
 	url(r'about/$', TemplateView.as_view(template_name='dashboard/about.html')),
 	url(r'contact/$', TemplateView.as_view(template_name='dashboard/contact.html')),
 	url(r'pca/$', TemplateView.as_view(template_name='dashboard/pca.html')),
-	url(r'returns/$', TemplateView.as_view(template_name='dashboard/returns.html')),
+	url(r'returns/$', views.returns_stats),
 )
