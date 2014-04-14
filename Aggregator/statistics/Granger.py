@@ -36,6 +36,7 @@ def getNames(aDate):
     dataArray = []
     
     for t in TABLENAMES:
+        print "HERE"
         print t
         if t!='hedgefunds':
             selectString1 = "select Ticker, CommonName, @curRank := @curRank + 1 as rank "
@@ -119,6 +120,7 @@ def grangerCausality(npNArray, npDArray):
                 row_pvalues.append(1)
         p_values.append(row_pvalues)
             #perform heteroscedastic and autocorrelation consistent regression
+    print "Actually calculated p-values"
     return p_values
 
   
@@ -127,8 +129,9 @@ if __name__ == '__main__':
     #genRollAutocorr()
     aDate = dt.datetime(2013, 12, 1)
     getNames(aDate)
-    #Dataoutput = open('GrangerData.pkl', 'rb')
-    #Nameoutput = open('GrangerNames.pkl', 'rb')
-    #npNArray = pickle.load(Nameoutput)
-    #npDArray = pickle.load(Dataoutput)
-    #p_value_matrix = grangerCausality(npNArray, npDArray)
+    Dataoutput = open('GrangerData.pkl', 'rb')
+    Nameoutput = open('GrangerNames.pkl', 'rb')
+    npNArray = pickle.load(Nameoutput)
+    npDArray = pickle.load(Dataoutput)
+    p_value_matrix = grangerCausality(npNArray, npDArray)
+    print p_value_matrix

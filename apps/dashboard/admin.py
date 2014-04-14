@@ -1,3 +1,4 @@
 from django.contrib import admin
+from apps.dashboard.models import SumStatistics
 
-# Register your models here.
+admin.site.register(SumStatistics)
