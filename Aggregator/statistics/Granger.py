@@ -85,6 +85,7 @@ def getNames(aDate):
     Nameoutput = open('GrangerNames.pkl', 'wb')
     pickle.dump(npDArray, Dataoutput)
     pickle.dump(npNArray, Nameoutput)
+    db.close()
     return npNArray, npDArray
 
 '''
