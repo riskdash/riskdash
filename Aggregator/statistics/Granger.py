@@ -9,7 +9,7 @@ import numpy as np
 import pickle
 import datetime as dt
 from HacRegression import HAC_Regression
-from DatabaseFiller.DatabaseTools import addMonths
+from ..DatabaseFiller.DatabaseTools import addMonths
 '''
 Get the tickers of all the companies we want to analyze with Granger Causality for a given date
 
@@ -17,7 +17,7 @@ input:
 aDate:  datetime object
 '''
 def getNames(aDate):
-    db = MySQLdb.connect(host = "127.0.0.1", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
+    db = MySQLdb.connect(host = "18.189.124.217", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
     cursor = db.cursor()
     
     TABLENAMES = ['brokers', 'banks', 'insurers', 'hedgefunds']
@@ -124,10 +124,10 @@ def grangerCausality(npNArray, npDArray):
 if __name__ == '__main__':
     #pullSummarizedStatistics()
     #genRollAutocorr()
-    #aDate = dt.datetime(2013, 12, 1)
-    #getNames(aDate)
-    Dataoutput = open('GrangerData.pkl', 'rb')
-    Nameoutput = open('GrangerNames.pkl', 'rb')
-    npNArray = pickle.load(Nameoutput)
-    npDArray = pickle.load(Dataoutput)
-    p_value_matrix = grangerCausality(npNArray, npDArray)
+    aDate = dt.datetime(2013, 12, 1)
+    getNames(aDate)
+    #Dataoutput = open('GrangerData.pkl', 'rb')
+    #Nameoutput = open('GrangerNames.pkl', 'rb')
+    #npNArray = pickle.load(Nameoutput)
+    #npDArray = pickle.load(Dataoutput)
+    #p_value_matrix = grangerCausality(npNArray, npDArray)

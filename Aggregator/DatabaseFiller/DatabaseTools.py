@@ -45,7 +45,7 @@ Checks the database connection
 def checkDBConnection():
     
     try:
-        db = MySQLdb.connect(host = "127.0.0.1", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
+        db = MySQLdb.connect(host = "18.189.124.217", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
         cursor = db.cursor()
         cursor.execute("SELECT VERSION()")
     
@@ -65,7 +65,7 @@ def checkDBConnection():
 Print out text files of the unique PERMNOs
 '''
 def printPermnos():
-    db = MySQLdb.connect(host = "127.0.0.1", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
+    db = MySQLdb.connect(host = "18.189.124.217", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
     cursor = db.cursor()
     for t in TABLENAMES:
         selectString = "select distinct(permno) "
@@ -79,7 +79,7 @@ def printPermnos():
 Load CSV files into the database tables
 '''
 def loadInstitutionCSVs():
-    db = MySQLdb.connect(host = "127.0.0.1", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
+    db = MySQLdb.connect(host = "18.189.124.217", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
     cursor = db.cursor()
     for t in TABLENAMES:
         trnQuery = "truncate table rawdata.%s"%t

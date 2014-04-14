@@ -58,7 +58,7 @@ def pullHFIndxCSV():
         
 
 def fillHFIndxDatabase():
-    db = MySQLdb.connect(host = "127.0.0.1", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
+    db = MySQLdb.connect(host = "18.189.124.217", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
     cursor = db.cursor()
     
     HFoutput = open('HFData.pkl', 'rb')
@@ -158,7 +158,7 @@ def SP500parse(csvfile, db, cursor):
 Pull CSV, and insert into database
 '''
 def pullHFCSV():
-    db = MySQLdb.connect(host = "127.0.0.1", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
+    db = MySQLdb.connect(host = "18.189.124.217", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
     cursor = db.cursor()
     
     cursor.execute("truncate rawdata.hedgefunds")
@@ -237,7 +237,7 @@ Create the value weighted indices for brokers, banks, insurers
 This will be referenced against the S&P 500
 '''
 def createIndexTables():
-    db = MySQLdb.connect(host = "127.0.0.1", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
+    db = MySQLdb.connect(host = "18.189.124.217", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
     cursor = db.cursor()
     
     TABLENAMES = ['brokers', 'banks', 'insurers', 'liquid', 'illiquid']
