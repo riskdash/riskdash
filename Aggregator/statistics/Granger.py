@@ -16,7 +16,7 @@ Get the tickers of all the companies we want to analyze with Granger Causality f
 input:
 aDate:  datetime object
 '''
-def getNames(aDate):
+def getNames(aDate, window = 36):
     db = MySQLdb.connect(host = "18.189.124.217", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
     cursor = db.cursor()
     
@@ -24,7 +24,6 @@ def getNames(aDate):
     
     cYear = int(aDate.strftime('%Y'))
     cMonth = int(aDate.strftime('%m'))
-    window = 36
     
     bDate = addMonths(aDate, -1*window-1)
     
@@ -93,7 +92,7 @@ return a matrix with p-values of granger causality metrics
 Each X value will be the input instituion returns, Y is the output
 
 '''
-def grangerCausality(npNArray, npDArray):
+def grangerCausality(npDArray):
     
     p_values = []
     for i, Xraw in enumerate(npDArray):
@@ -122,6 +121,13 @@ def grangerCausality(npNArray, npDArray):
     p_values = np.array(p_values)
     return p_values
 
+'''
+Returns the granger p-values for 
+'''
+def getGCPvalues(aDate= dt.date(2014, 01, 01)):
+    npNArray, npDArray = getNames(aDate)
+    p_values = grangerCausality(npDArray)
+    return npNArray, p_values
   
 if __name__ == '__main__':
     #pullSummarizedStatistics()
