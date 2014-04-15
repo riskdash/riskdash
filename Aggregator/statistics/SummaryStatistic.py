@@ -18,25 +18,32 @@ import numpy as np
 from scipy import stats
 from Autocorrelation import autocorr
 import pickle
+import datetime as dt
 
 standardIndices = ['SP500', 'brokers', 'banks', 'insurers', 'liquid', 'illiquid']
 HFIndices_raw = ['', 'Global Macro ', 'Long/Short Equity ']
-IPADDR = "18.189.124.217"
+IPADDR = "127.0.0.1"
 
 '''
 Return a numpy array of sorted DB data for the given column name, sorted by date in chronological order
 
-inputs
+---inputs---
 ind:  requires to be from the standard or HF indices_raw
 colName:  requires to be a column name from the indices table.  Requires to be matching in case
-
-outputs
+aDate:  DateTime object of the start date.  Requires aDate> 1994-01-01 and aDate < bDate
+bDate:  DateTime object of the end date.  Requires bDate<Today and aDate < bDate
+---outputs---
 ROR:  numpy array of the ROR for the index
 indNew:  Cleaned index name
 '''
-def getIndData(ind, colName, aDate="19940101", bDate = "20140101"):
+def getIndData(ind, colName, aDate=dt.date(1994, 01, 01), bDate = dt.date(2014, 01, 01)):
+    
+    assert(aDate < bDate)
+    
     db = MySQLdb.connect(host = IPADDR, port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
     cursor = db.cursor()
+    
+    
     suffix = "Hedge Fund Index"
     if ind in standardIndices:
         tname = 'indices'
@@ -45,7 +52,11 @@ def getIndData(ind, colName, aDate="19940101", bDate = "20140101"):
         tname = 'hfindices'
         indNew = ind + suffix
     
-    sqlquery1 = "SELECT %s FROM rawdata.%s where IndexID='%s' and Date>'%s' and Date<'%s' order by Date"%(colName, tname, indNew, aDate, bDate)
+    selectString = "SELECT %s"%colName
+    fromString = "FROM rawdata.%s"%tname
+    whereString = "where IndexID='%s' and Date>'%s' and Date<'%s'"%(indNew, aDate.strftime("%Y%m%d"),bDate.strftime("%Y%m%d"))
+    orderString = "order by Date"
+    sqlquery1 = "%s %s %s %s"%(selectString, fromString, whereString, orderString)
     cursor.execute(sqlquery1)
     results = cursor.fetchall()
     datalist = []
@@ -59,7 +70,18 @@ def getIndData(ind, colName, aDate="19940101", bDate = "20140101"):
     db.close()
     return data, indNew
 
-def pullSummarizedStatistics():
+
+'''
+Get the summarized statistics for the given time span
+
+---Inputs---
+aDate:  DateTime object of the start date.  Requires aDate> 1994-01-01 and aDate < bDate
+bDate:  DateTime object of the end date.  Requires bDate<Today and aDate < bDate
+---Outputs---
+outputDict:  A dictionary of index name keys mapped to an array of summarized statistics
+The statistics are listed in the Billio paper (will add to documentation later)
+'''
+def pullSummarizedStatistics(aDate=dt.date(1994, 01, 01), bDate = dt.date(2014, 01, 01)):
     db = MySQLdb.connect(host = IPADDR, port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
     cursor = db.cursor()
     
@@ -67,7 +89,7 @@ def pullSummarizedStatistics():
     suffix = "Hedge Fund Index"
     
     for ind in standardIndices+HFIndices_raw:
-        ROR, indNew = getIndData(ind, 'ROR')
+        ROR, indNew = getIndData(ind, 'ROR', aDate, bDate)
         rorDataDict[indNew] = ROR
     
     outputDict = {}
@@ -97,7 +119,9 @@ def pullSummarizedStatistics():
     return outputDict
 
 if __name__ == '__main__':
-    pullSummarizedStatistics()
+    aDate = dt.date(1994, 01, 01)
+    bDate = dt.date(2009, 01, 01)
+    pullSummarizedStatistics(aDate, bDate)
 
     
     
