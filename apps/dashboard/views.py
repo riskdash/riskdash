@@ -1,6 +1,8 @@
+import json
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from apps.dashboard.models import SumStatistics
+from django.http import HttpResponse
+from apps.dashboard.models import SumStatistics, CumRF
 
 def returns_stats(request):	
 	stats = SumStatistics.objects.all()
@@ -43,3 +45,9 @@ def returns_stats(request):
 		elif s.sector == "SP500":
 			cleaned_stats[8] = s
 	return render_to_response('dashboard/returns.html', {'stats': cleaned_stats}, context_instance=RequestContext(request))
+
+def crf_data(request):
+	points = CumRF.objects.all()
+	data = [ {'date': p.date, 'price': p.frac} for p in points]
+
+	return HttpResponse(json.dumps(data), mimetype='application/json')

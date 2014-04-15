@@ -101,6 +101,6 @@ if __name__ == '__main__':
     print eigVec
     frac1 = CumulRiskFrac(eigVal)
     print "The value over all time is %5.6f"%frac1
-    rollingCumulRiskFrac(index_names)
+    print rollingCumulRiskFrac(index_names)
     
     

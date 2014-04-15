@@ -8,5 +8,6 @@ urlpatterns = patterns('',
 	url(r'about/$', TemplateView.as_view(template_name='dashboard/about.html')),
 	url(r'contact/$', TemplateView.as_view(template_name='dashboard/contact.html')),
 	url(r'pca/$', TemplateView.as_view(template_name='dashboard/pca.html')),
+	url(r'pca/data/$', views.crf_data),
 	url(r'returns/$', views.returns_stats),
 )

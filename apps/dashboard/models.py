@@ -19,3 +19,10 @@ class SumStatistics (models.Model):
 
 	def __unicode__(self):
 		return self.sector
+
+class CumRF (models.Model):
+	date = models.CharField(max_length=100)
+	frac = models.FloatField()
+
+	def __unicode__(self):
+		return str(self.frac)
