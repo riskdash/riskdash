@@ -59,20 +59,20 @@ def rollingCumulRiskFrac(index_names, window= 36):
     for i, ind in enumerate(index_names):
         ROR, newInd = getIndData(ind, 'ROR')
         Date, newInd = getIndData(ind, 'Date')
-        print newInd
+        #print newInd
         listtmp = np.ndarray.tolist(ROR)
-        print len(listtmp)
+        #print len(listtmp)
         if i==0:
             RORs = np.array([listtmp])
         else:
             RORs = np.append(RORs, [listtmp], axis= 0)
     
-    print RORs[:, 1:36]
+    #print RORs[:, 1:36]
     
     size = len(RORs[0])
     rollingCRF = []
     for i in range(window, size):
-        print i
+        #print i
         covMat = np.cov(RORs[:,i-window:i])
         eigVal, eigVec = np.linalg.eig(covMat)
         crf = CumulRiskFrac(eigVal)
@@ -80,6 +80,7 @@ def rollingCumulRiskFrac(index_names, window= 36):
     
     tAxis = Date[window:]
     
+    '''
     fig, ax = plt.subplots()
     ax.plot_date(tAxis, rollingCRF, linestyle='--')
     ax.set_title('Rolling CRF')
@@ -87,6 +88,7 @@ def rollingCumulRiskFrac(index_names, window= 36):
          
     fig.autofmt_xdate()
     plt.show()
+    '''
     
     return [tAxis, rollingCRF]
 
