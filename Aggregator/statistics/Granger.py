@@ -124,7 +124,7 @@ def grangerCausality(npDArray):
 '''
 Returns the granger p-values for 
 '''
-def getGCPvalues(aDate= dt.date(2014, 01, 01)):
+def getGCPvalues(aDate= dt.date(2013, 12, 31)):
     npNArray, npDArray = getNames(aDate)
     print "NAMES AHHH"
     print npNArray
@@ -140,12 +140,12 @@ if __name__ == '__main__':
     Nameoutput = open('GrangerNames.pkl', 'rb')
     npNArray = pickle.load(Nameoutput)
     npDArray = pickle.load(Dataoutput)
-    print "Names" + str(npNArray)
+    #print "Names" + str(npNArray)
     p_value_matrix = grangerCausality(npDArray)
-    print "P-values" + str(p_value_matrix)
-    #(names, p_values) = getGCPvalues()
-    #print "Names: " + str(names)
-    #print "P_vals: " + str(p_values)
-    #print "Size of names: " + str(len(names))
-    #print "Size of P_vals: " + str(len(p_values)) + " by " + str(len(p_values[0]))
+    #print "P-values" + str(p_value_matrix)
+    (names, p_values) = getGCPvalues()
+    print "Names: " + str(names)
+    print "P_vals: " + str(p_values)
+    print "Size of names: " + str(len(names))
+    print "Size of P_vals: " + str(len(p_values)) + " by " + str(len(p_values[0]))
 

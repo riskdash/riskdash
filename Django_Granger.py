@@ -14,10 +14,29 @@ if __name__ == '__main__':
     	firm_dict = {}
     	imports = []
     	for j in range(0, len(p_values[i])):
-    		if p_values[i][j] > 0.8:
-    			imports.append(str(names[j][0]))
+    		if p_values[i][j] > 0.95:
+    			full_string = ""
+    			if j < 25:
+    				full_string = "root.bank."
+    			elif j >= 25 and j < 50:
+    				full_string = "root.broker."
+    			elif j >= 50 and j < 75:
+    				full_string = "root.insurer."
+    			else:
+    				full_string = "root.hfund."
+    			imports.append(full_string + str(names[j][0]))
     			#print "Imports: " + str(names[j][0])
-    	firm_dict["name"] = str(names[i][0])
+
+		full_string = ""
+		if i < 25:
+			full_string = "root.bank."
+		elif i >= 25 and i < 50:
+			full_string = "root.broker."
+		elif i >= 50 and i < 75:
+			full_string = "root.insurer."
+		else:
+			full_string = "root.hfund."
+    	firm_dict["name"] = full_string + str(names[i][0])
     	firm_dict["size"] = 90;
     	firm_dict["imports"] = imports;
     	#print str(firm_dict)
