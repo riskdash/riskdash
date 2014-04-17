@@ -25,7 +25,7 @@ def genRollAutocorr():
     for ind in standardIndices+HFIndices_raw:
         ROR, indNew = getIndData(ind, 'ROR')
         Date, indNew = getIndData(ind, 'Date')
-        end = lepn(ROR)
+        end = len(ROR)
         rollingac = []
         upbound = []
         lowbound = []
@@ -129,4 +129,4 @@ def rollCrossCorr():
 if __name__ == '__main__':
     #pullSummarizedStatistics()
     #genRollAutocorr()
-    print rollCrossCorr()
+    rollCrossCorr()
