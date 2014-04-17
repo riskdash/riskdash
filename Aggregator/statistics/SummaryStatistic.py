@@ -22,7 +22,7 @@ import datetime as dt
 
 standardIndices = ['SP500', 'brokers', 'banks', 'insurers', 'liquid', 'illiquid']
 HFIndices_raw = ['', 'Global Macro ', 'Long/Short Equity ']
-IPADDR = "18.189.124.217"
+IPADDR = "127.0.0.1"
 
 '''
 Return a numpy array of sorted DB data for the given column name, sorted by date in chronological order

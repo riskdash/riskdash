@@ -4,88 +4,13 @@ Created on Mar 27, 2014
 @author: Hanwen Xu
 '''
 
-import MySQLdb
 import numpy as np
-import pickle
 import datetime as dt
 from HacRegression import HAC_Regression
-from ..DatabaseFiller.DatabaseTools import addMonths
-'''
-Get the tickers of all the companies we want to analyze with Granger Causality for a given date
-
-input:
-aDate:  datetime object
-'''
-def getNames(aDate, window = 36):
-    db = MySQLdb.connect(host = "18.189.124.217", port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
-    cursor = db.cursor()
-    
-    TABLENAMES = ['brokers', 'banks', 'insurers', 'hedgefunds']
-    
-    cYear = int(aDate.strftime('%Y'))
-    cMonth = int(aDate.strftime('%m'))
-    
-    bDate = addMonths(aDate, -1*window-1)
-    
-    
-    #store the ticker and common name for stocks, 
-    #store the hedge fund ID and asset value for hedge funds
-    nameArray = []
-    #store the past 48 months of return data
-    dataArray = []
-    
-    for t in TABLENAMES:
-        #print t
-        if t!='hedgefunds':
-            selectString1 = "select Ticker, CommonName, @curRank := @curRank + 1 as rank "
-            orderByString = "order by abs(Price)*SharesOut desc limit 0, 25;"
-            selectString2 = "select abs(Price)*SharesOut, Date "
-        else:
-            selectString1 = "select HFID, AssetValue, @curRank := @curRank + 1 as rank "
-            orderByString = "order by AssetValue desc limit 0, 25;"
-            selectString2 = "select ROR, Date "
-        fromString = "from rawdata.%s b, (select @curRank := 0) r "%(t)
-        whereString = "where Year(Date)='%d' and Month(Date)='%d' "%(cYear, cMonth)
-        sqlQuery = selectString1+fromString+whereString+orderByString
-        cursor.execute(sqlQuery)
-        results = cursor.fetchall()
-        for r in results:
-            #print r
-            nameArray.append((r[0], r[1]))
-            if t=='hedgefunds':
-                identifier = "HFID = '%d'"%r[0]
-            else:
-                identifier = "Ticker = '%s'"%r[0]
-            orderByString2 = "order by Date desc;"
-            adStr = aDate.strftime('%Y%m%d')
-            bdStr = bDate.strftime('%Y%m%d')
-            wString1 = "where %s and Date<'%s' and Date>'%s' "%(identifier, adStr, bdStr)
-            sqlQuery2 = selectString2+fromString+wString1+orderByString2
-            cursor.execute(sqlQuery2)
-            nameResults = cursor.fetchall()
-            RORdata = []
-            #print len(nameResults)
-            for i in xrange(window):
-                if i>=len(nameResults)-1:
-                    RORdata.append(0)
-                elif t=='hedgefunds':
-                    RORdata.append(round(nameResults[i][0], 5))
-                else:
-                    NAV = float(nameResults[i][0])
-                    NAV2 = float(nameResults[i+1][0])
-                    ROR = 100.0*(NAV2-NAV)/NAV
-                    RORdata.append(round(ROR, 5))
-            RORdata.reverse()
-            dataArray.append(RORdata[1:])
-    npDArray = dataArray
-    npNArray = nameArray
-    #print npDArray
-    Dataoutput = open('GrangerData.pkl', 'wb')
-    Nameoutput = open('GrangerNames.pkl', 'wb')
-    pickle.dump(npDArray, Dataoutput)
-    pickle.dump(npNArray, Nameoutput)
-    db.close()
-    return npNArray, npDArray
+from time import time
+from DataTools import getNames
+from DatabaseFiller.DatabaseTools import addMonths
+import pickle, sys
 
 '''
 return a matrix with p-values of granger causality metrics
@@ -112,7 +37,7 @@ def grangerCausality(npDArray):
                         olsModel.summary()
                     row_pvalues.append(olsModel.p[1])
                 except:
-                    #print "position %d and %d have a singular matrix"%(i, j)
+                    print "position %d and %d have a singular matrix"%(i, j)
                     row_pvalues.append(1)
             else:
                 row_pvalues.append(1)
@@ -122,30 +47,62 @@ def grangerCausality(npDArray):
     return p_values
 
 '''
-Returns the granger p-values for 
+Returns the granger p-values for the given time
+===Input===
+aDate:  datetime object for the end date
+===Output===
+npNArray:  the names of the companies
+p_values:  the matrix of p-values
+
 '''
-def getGCPvalues(aDate= dt.date(2014, 01, 01)):
+def getGCPvalues(aDate= dt.date(2013, 01, 01)):
+    
+    tick = time()
     npNArray, npDArray = getNames(aDate)
-    print "NAMES AHHH"
-    print npNArray
     p_values = grangerCausality(npDArray)
+    tock = time()
+    print 'getting p-values takes %f' %(tock-tick)
     return npNArray, p_values
-  
+
+
+'''
+Pull all the data for granger, and then store it into a dictionary
+'''
+def generateAllGrangerMonths():
+    
+    now = dt.datetime.now()
+    precalculatedDict = {}
+    iDate = dt.datetime(1996, 1, 31)
+    while iDate < now:
+        try:
+            npNArray, p_values = getGCPvalues(aDate= dt.date(2013, 01, 01))
+            precalculatedDict[iDate]= [npNArray, p_values]
+            iDate = addMonths(iDate, 1)
+            print iDate.strftime('%Y/%m/%d %H:%M:%S')
+        except:
+            print "Unexpected error:", sys.exc_info()[0]
+            raise
+    Nameoutput = open('GrangerPrecomputed.pkl', 'wb')
+    pickle.dump(precalculatedDict, Nameoutput)
+        
 if __name__ == '__main__':
     #pullSummarizedStatistics()
     #genRollAutocorr()
-    #aDate = dt.datetime(2013, 12, 1)
-    #getNames(aDate)
+    aDate = dt.datetime(2013, 12, 1)
+    npNar1, npDar1 = getGCPvalues(aDate)
+    
+    '''
     Dataoutput = open('GrangerData.pkl', 'rb')
     Nameoutput = open('GrangerNames.pkl', 'rb')
     npNArray = pickle.load(Nameoutput)
     npDArray = pickle.load(Dataoutput)
-    print "Names" + str(npNArray)
-    p_value_matrix = grangerCausality(npDArray)
-    print "P-values" + str(p_value_matrix)
-    #(names, p_values) = getGCPvalues()
-    #print "Names: " + str(names)
-    #print "P_vals: " + str(p_values)
-    #print "Size of names: " + str(len(names))
-    #print "Size of P_vals: " + str(len(p_values)) + " by " + str(len(p_values[0]))
-
+    p_value_matrix = grangerCausality(npNArray, npDArray)
+    print p_value_matrix[1][2]
+    '''
+    #names, p_values= getGCPvalues()
+    #print p_values
+    #generateAllGrangerMonths()
+    Nameoutput = open('GrangerNames.pkl', 'rb')
+    npNArray = pickle.load(Nameoutput)
+    print npNArray
+    print npNar1
