@@ -9,7 +9,7 @@ import numpy as np
 import pickle
 import datetime as dt
 from HacRegression import HAC_Regression
-from DatabaseFiller.DatabaseTools import addMonths
+from ..DatabaseFiller.DatabaseTools import addMonths
 '''
 Get the tickers of all the companies we want to analyze with Granger Causality for a given date
 
@@ -35,7 +35,7 @@ def getNames(aDate, window = 36):
     dataArray = []
     
     for t in TABLENAMES:
-        print t
+        #print t
         if t!='hedgefunds':
             selectString1 = "select Ticker, CommonName, @curRank := @curRank + 1 as rank "
             orderByString = "order by abs(Price)*SharesOut desc limit 0, 25;"
@@ -50,7 +50,7 @@ def getNames(aDate, window = 36):
         cursor.execute(sqlQuery)
         results = cursor.fetchall()
         for r in results:
-            print r
+            #print r
             nameArray.append((r[0], r[1]))
             if t=='hedgefunds':
                 identifier = "HFID = '%d'"%r[0]
@@ -64,7 +64,7 @@ def getNames(aDate, window = 36):
             cursor.execute(sqlQuery2)
             nameResults = cursor.fetchall()
             RORdata = []
-            print len(nameResults)
+            #print len(nameResults)
             for i in xrange(window):
                 if i>=len(nameResults)-1:
                     RORdata.append(0)
@@ -112,7 +112,7 @@ def grangerCausality(npDArray):
                         olsModel.summary()
                     row_pvalues.append(olsModel.p[1])
                 except:
-                    print "position %d and %d have a singular matrix"%(i, j)
+                    #print "position %d and %d have a singular matrix"%(i, j)
                     row_pvalues.append(1)
             else:
                 row_pvalues.append(1)
@@ -126,6 +126,8 @@ Returns the granger p-values for
 '''
 def getGCPvalues(aDate= dt.date(2014, 01, 01)):
     npNArray, npDArray = getNames(aDate)
+    print "NAMES AHHH"
+    print npNArray
     p_values = grangerCausality(npDArray)
     return npNArray, p_values
   
@@ -138,5 +140,12 @@ if __name__ == '__main__':
     Nameoutput = open('GrangerNames.pkl', 'rb')
     npNArray = pickle.load(Nameoutput)
     npDArray = pickle.load(Dataoutput)
-    p_value_matrix = grangerCausality(npNArray, npDArray)
-    print p_value_matrix[1][2]
+    print "Names" + str(npNArray)
+    p_value_matrix = grangerCausality(npDArray)
+    print "P-values" + str(p_value_matrix)
+    #(names, p_values) = getGCPvalues()
+    #print "Names: " + str(names)
+    #print "P_vals: " + str(p_values)
+    #print "Size of names: " + str(len(names))
+    #print "Size of P_vals: " + str(len(p_values)) + " by " + str(len(p_values[0]))
+

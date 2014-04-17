@@ -1,4 +1,5 @@
 from django.db import models
+from jsonfield import JSONField
 
 class SumStatistics (models.Model):
 	sector = models.CharField(max_length=100)
@@ -26,3 +27,9 @@ class CumRF (models.Model):
 
 	def __unicode__(self):
 		return str(self.frac)
+
+class GrangerCausalityConn(models.Model):
+	imports = JSONField()
+
+	def __unicode__(self):
+		return str(self.imports)

@@ -344,6 +344,173 @@ ALTER SEQUENCE dashboard_cumrf_id_seq OWNED BY dashboard_cumrf.id;
 
 
 --
+-- Name: dashboard_granger; Type: TABLE; Schema: public; Owner: riskdash; Tablespace: 
+--
+
+CREATE TABLE dashboard_granger (
+    id integer NOT NULL,
+    name character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.dashboard_granger OWNER TO riskdash;
+
+--
+-- Name: dashboard_granger_id_seq; Type: SEQUENCE; Schema: public; Owner: riskdash
+--
+
+CREATE SEQUENCE dashboard_granger_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.dashboard_granger_id_seq OWNER TO riskdash;
+
+--
+-- Name: dashboard_granger_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: riskdash
+--
+
+ALTER SEQUENCE dashboard_granger_id_seq OWNED BY dashboard_granger.id;
+
+
+--
+-- Name: dashboard_grangercausality; Type: TABLE; Schema: public; Owner: riskdash; Tablespace: 
+--
+
+CREATE TABLE dashboard_grangercausality (
+    id integer NOT NULL,
+    name character varying(100) NOT NULL,
+    imports json NOT NULL
+);
+
+
+ALTER TABLE public.dashboard_grangercausality OWNER TO riskdash;
+
+--
+-- Name: dashboard_grangercausality_id_seq; Type: SEQUENCE; Schema: public; Owner: riskdash
+--
+
+CREATE SEQUENCE dashboard_grangercausality_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.dashboard_grangercausality_id_seq OWNER TO riskdash;
+
+--
+-- Name: dashboard_grangercausality_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: riskdash
+--
+
+ALTER SEQUENCE dashboard_grangercausality_id_seq OWNED BY dashboard_grangercausality.id;
+
+
+--
+-- Name: dashboard_grangercausalityconn; Type: TABLE; Schema: public; Owner: riskdash; Tablespace: 
+--
+
+CREATE TABLE dashboard_grangercausalityconn (
+    id integer NOT NULL,
+    imports json NOT NULL
+);
+
+
+ALTER TABLE public.dashboard_grangercausalityconn OWNER TO riskdash;
+
+--
+-- Name: dashboard_grangercausalityconn_id_seq; Type: SEQUENCE; Schema: public; Owner: riskdash
+--
+
+CREATE SEQUENCE dashboard_grangercausalityconn_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.dashboard_grangercausalityconn_id_seq OWNER TO riskdash;
+
+--
+-- Name: dashboard_grangercausalityconn_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: riskdash
+--
+
+ALTER SEQUENCE dashboard_grangercausalityconn_id_seq OWNED BY dashboard_grangercausalityconn.id;
+
+
+--
+-- Name: dashboard_grangercausalityconns; Type: TABLE; Schema: public; Owner: riskdash; Tablespace: 
+--
+
+CREATE TABLE dashboard_grangercausalityconns (
+    id integer NOT NULL,
+    imports json NOT NULL
+);
+
+
+ALTER TABLE public.dashboard_grangercausalityconns OWNER TO riskdash;
+
+--
+-- Name: dashboard_grangercausalityconns_id_seq; Type: SEQUENCE; Schema: public; Owner: riskdash
+--
+
+CREATE SEQUENCE dashboard_grangercausalityconns_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.dashboard_grangercausalityconns_id_seq OWNER TO riskdash;
+
+--
+-- Name: dashboard_grangercausalityconns_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: riskdash
+--
+
+ALTER SEQUENCE dashboard_grangercausalityconns_id_seq OWNED BY dashboard_grangercausalityconns.id;
+
+
+--
+-- Name: dashboard_grangerconns; Type: TABLE; Schema: public; Owner: riskdash; Tablespace: 
+--
+
+CREATE TABLE dashboard_grangerconns (
+    id integer NOT NULL,
+    name character varying(100) NOT NULL,
+    imports json NOT NULL
+);
+
+
+ALTER TABLE public.dashboard_grangerconns OWNER TO riskdash;
+
+--
+-- Name: dashboard_grangerconns_id_seq; Type: SEQUENCE; Schema: public; Owner: riskdash
+--
+
+CREATE SEQUENCE dashboard_grangerconns_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.dashboard_grangerconns_id_seq OWNER TO riskdash;
+
+--
+-- Name: dashboard_grangerconns_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: riskdash
+--
+
+ALTER SEQUENCE dashboard_grangerconns_id_seq OWNED BY dashboard_grangerconns.id;
+
+
+--
 -- Name: dashboard_summarystatistics; Type: TABLE; Schema: public; Owner: riskdash; Tablespace: 
 --
 
@@ -637,6 +804,41 @@ ALTER TABLE ONLY dashboard_cumrf ALTER COLUMN id SET DEFAULT nextval('dashboard_
 -- Name: id; Type: DEFAULT; Schema: public; Owner: riskdash
 --
 
+ALTER TABLE ONLY dashboard_granger ALTER COLUMN id SET DEFAULT nextval('dashboard_granger_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: riskdash
+--
+
+ALTER TABLE ONLY dashboard_grangercausality ALTER COLUMN id SET DEFAULT nextval('dashboard_grangercausality_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: riskdash
+--
+
+ALTER TABLE ONLY dashboard_grangercausalityconn ALTER COLUMN id SET DEFAULT nextval('dashboard_grangercausalityconn_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: riskdash
+--
+
+ALTER TABLE ONLY dashboard_grangercausalityconns ALTER COLUMN id SET DEFAULT nextval('dashboard_grangercausalityconns_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: riskdash
+--
+
+ALTER TABLE ONLY dashboard_grangerconns ALTER COLUMN id SET DEFAULT nextval('dashboard_grangerconns_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: riskdash
+--
+
 ALTER TABLE ONLY dashboard_summarystatistics ALTER COLUMN id SET DEFAULT nextval('dashboard_summarystatistics_id_seq'::regclass);
 
 
@@ -727,6 +929,9 @@ COPY auth_permission (id, name, content_type_id, codename) FROM stdin;
 40	Can add cum rf	14	add_cumrf
 41	Can change cum rf	14	change_cumrf
 42	Can delete cum rf	14	delete_cumrf
+58	Can add granger causality conn	20	add_grangercausalityconn
+59	Can change granger causality conn	20	change_grangercausalityconn
+60	Can delete granger causality conn	20	delete_grangercausalityconn
 \.
 
 
@@ -734,7 +939,7 @@ COPY auth_permission (id, name, content_type_id, codename) FROM stdin;
 -- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: riskdash
 --
 
-SELECT pg_catalog.setval('auth_permission_id_seq', 42, true);
+SELECT pg_catalog.setval('auth_permission_id_seq', 60, true);
 
 
 --
@@ -1645,6 +1850,109 @@ SELECT pg_catalog.setval('dashboard_cumrf_id_seq', 204, true);
 
 
 --
+-- Data for Name: dashboard_granger; Type: TABLE DATA; Schema: public; Owner: riskdash
+--
+
+COPY dashboard_granger (id, name) FROM stdin;
+\.
+
+
+--
+-- Name: dashboard_granger_id_seq; Type: SEQUENCE SET; Schema: public; Owner: riskdash
+--
+
+SELECT pg_catalog.setval('dashboard_granger_id_seq', 1, false);
+
+
+--
+-- Data for Name: dashboard_grangercausality; Type: TABLE DATA; Schema: public; Owner: riskdash
+--
+
+COPY dashboard_grangercausality (id, name, imports) FROM stdin;
+1	51106	"[51106L, 78080L, 33364L, 54608L, 58119L, 82442L, 2058L, 71436L, 72954L, 3020L, 96255L, 96257L]"
+\.
+
+
+--
+-- Name: dashboard_grangercausality_id_seq; Type: SEQUENCE SET; Schema: public; Owner: riskdash
+--
+
+SELECT pg_catalog.setval('dashboard_grangercausality_id_seq', 1, true);
+
+
+--
+-- Data for Name: dashboard_grangercausalityconn; Type: TABLE DATA; Schema: public; Owner: riskdash
+--
+
+COPY dashboard_grangercausalityconn (id, imports) FROM stdin;
+1	[{"imports":["51106","33364","2058","71436","3020","96257"],"name":"51106","size":90},{"imports":["78080","33364","4062","40324","58119","71436","72954","96255","96257","101818"],"name":"78080","size":90},{"imports":["78080","40216","98665","78443","99314","96242","101817","101818","101819"],"name":"40216","size":90},{"imports":["33364","98665","58119","71436","101818"],"name":"33364","size":90},{"imports":["78080","98665","90976","78086","58119","96242"],"name":"98665","size":90},{"imports":["78080","90976","71436","96242","96257"],"name":"90976","size":90},{"imports":["78086","40324","58119","71436","96255","96257","101818","101819"],"name":"78086","size":90},{"imports":["98665","4062","2058","71436","99314","101819"],"name":"4062","size":90},{"imports":["40216","33364","90976","78086","40324","82442","72954","96255","96256","96257","101819"],"name":"40324","size":90},{"imports":["51106","90976","4062","54608","71436","3020"],"name":"54608","size":90},{"imports":["4062","40324","58119","82442","71436","72954","96242"],"name":"58119","size":90},{"imports":["78086","82442","2058","72954","99314","101817","101819"],"name":"82442","size":90},{"imports":["98665","78443","101818","101819"],"name":"78443","size":90},{"imports":["51106","90976","40324","2058","99314","3020","96242","101817","101818","101819"],"name":"2058","size":90},{"imports":["78080","40216","78086","40324","71436","99314","101819"],"name":"71436","size":90},{"imports":["40216","98665","71436","72954","101818","101819"],"name":"72954","size":90},{"imports":["78080","40216","33364","4062","71436","72954","99314","101817","101819"],"name":"99314","size":90},{"imports":["51106","33364","2058","71436","3020","96257"],"name":"3020","size":90},{"imports":["40216","33364","98665","4062","82442","78443","2058","72954","99314","96242","96255","96256","96257","101817"],"name":"96242","size":90},{"imports":["51106","90976","78443","71436","3020","96242","96255","101817","101818"],"name":"96255","size":90},{"imports":["51106","90976","4062","78443","71436","3020","96242","96255","96256","101817","101818"],"name":"96256","size":90},{"imports":["51106","90976","71436","3020","96242","96255","96257","101817","101818"],"name":"96257","size":90},{"imports":["51106","40216","4062","58119","2058","3020","101817"],"name":"101817","size":90},{"imports":["51106","78080","40216","98665","90976","4062","58119","71436","72954","3020","96257","101818"],"name":"101818","size":90},{"imports":["51106","40216","78086","4062","40324","58119","82442","2058","71436","3020","96242","101819"],"name":"101819","size":90}]
+\.
+
+
+--
+-- Name: dashboard_grangercausalityconn_id_seq; Type: SEQUENCE SET; Schema: public; Owner: riskdash
+--
+
+SELECT pg_catalog.setval('dashboard_grangercausalityconn_id_seq', 1, true);
+
+
+--
+-- Data for Name: dashboard_grangercausalityconns; Type: TABLE DATA; Schema: public; Owner: riskdash
+--
+
+COPY dashboard_grangercausalityconns (id, imports) FROM stdin;
+1	[{"imports":["51106","78080","33364","54608","58119","82442","2058","71436","72954","3020","96255","96257"],"name":"51106","size":90},{"imports":["78080","33364","98665","4062","40324","58119","82442","78443","2058","71436","72954","96242","96255","96256","96257","101817","101818","101819"],"name":"78080","size":90},{"imports":["78080","40216","33364","98665","90976","78086","40324","58119","82442","78443","71436","72954","99314","96242","96255","96256","96257","101817","101818","101819"],"name":"40216","size":90},{"imports":["40216","33364","98665","90976","40324","58119","71436","99314","96255","96257","101818","101819"],"name":"33364","size":90},{"imports":["51106","78080","98665","90976","78086","4062","40324","58119","82442","71436","3020","96242","96255","96256"],"name":"98665","size":90},{"imports":["78080","90976","78086","2058","71436","72954","99314","96242","96255","96256","96257","101817","101818","101819"],"name":"90976","size":90},{"imports":["78080","33364","98665","78086","4062","40324","58119","82442","2058","71436","72954","99314","96242","96255","96256","96257","101817","101818","101819"],"name":"78086","size":90},{"imports":["51106","78080","33364","98665","90976","78086","4062","82442","2058","71436","72954","99314","3020","101817","101818","101819"],"name":"4062","size":90},{"imports":["78080","40216","33364","90976","78086","4062","40324","54608","58119","82442","72954","96242","96255","96256","96257","101817","101819"],"name":"40324","size":90},{"imports":["51106","78080","98665","90976","4062","40324","54608","82442","2058","71436","3020","96242","101817","101818"],"name":"54608","size":90},{"imports":["78080","40216","33364","78086","4062","40324","58119","82442","2058","71436","72954","96242","96255","96256","96257","101819"],"name":"58119","size":90},{"imports":["78080","33364","78086","40324","82442","2058","72954","99314","96242","101817","101818","101819"],"name":"82442","size":90},{"imports":["98665","90976","4062","54608","78443","2058","71436","96242","101818","101819"],"name":"78443","size":90},{"imports":["51106","78080","90976","78086","40324","58119","2058","99314","3020","96242","101817","101818","101819"],"name":"2058","size":90},{"imports":["78080","40216","78086","40324","71436","99314","96242","101819"],"name":"71436","size":90},{"imports":["40216","98665","40324","58119","71436","72954","99314","101818","101819"],"name":"72954","size":90},{"imports":["51106","78080","40216","33364","90976","78086","4062","78443","71436","72954","99314","3020","101817","101819"],"name":"99314","size":90},{"imports":["51106","78080","33364","90976","54608","58119","82442","2058","71436","72954","3020","96255","96257"],"name":"3020","size":90},{"imports":["78080","40216","33364","98665","78086","4062","82442","78443","2058","72954","99314","96242","96255","96256","96257","101817","101819"],"name":"96242","size":90},{"imports":["51106","78080","40216","98665","90976","78086","4062","40324","78443","71436","99314","3020","96242","96255","101817","101818","101819"],"name":"96255","size":90},{"imports":["51106","78080","40216","98665","90976","78086","4062","40324","78443","71436","3020","96242","96255","96256","101817","101818","101819"],"name":"96256","size":90},{"imports":["51106","40216","98665","90976","78086","4062","40324","78443","71436","99314","3020","96242","96255","96257","101817","101818","101819"],"name":"96257","size":90},{"imports":["51106","40216","98665","78086","4062","54608","58119","78443","2058","99314","3020","96255","96257","101817"],"name":"101817","size":90},{"imports":["51106","78080","40216","33364","98665","90976","78086","4062","58119","82442","78443","2058","71436","72954","99314","3020","96255","96257","101817","101818"],"name":"101818","size":90},{"imports":["51106","78080","40216","90976","78086","4062","40324","54608","58119","82442","2058","71436","3020","96242","96255","96257","101817","101819"],"name":"101819","size":90}]
+\.
+
+
+--
+-- Name: dashboard_grangercausalityconns_id_seq; Type: SEQUENCE SET; Schema: public; Owner: riskdash
+--
+
+SELECT pg_catalog.setval('dashboard_grangercausalityconns_id_seq', 1, true);
+
+
+--
+-- Data for Name: dashboard_grangerconns; Type: TABLE DATA; Schema: public; Owner: riskdash
+--
+
+COPY dashboard_grangerconns (id, name, imports) FROM stdin;
+1	51106	[51106,78080,33364,54608,58119,82442,2058,71436,72954,3020,96255,96257]
+2	78080	[78080,33364,98665,4062,40324,58119,82442,78443,2058,71436,72954,96242,96255,96256,96257,101817,101818,101819]
+3	40216	[78080,40216,33364,98665,90976,78086,40324,58119,82442,78443,71436,72954,99314,96242,96255,96256,96257,101817,101818,101819]
+4	33364	[40216,33364,98665,90976,40324,58119,71436,99314,96255,96257,101818,101819]
+5	98665	[51106,78080,98665,90976,78086,4062,40324,58119,82442,71436,3020,96242,96255,96256]
+6	90976	[78080,90976,78086,2058,71436,72954,99314,96242,96255,96256,96257,101817,101818,101819]
+7	78086	[78080,33364,98665,78086,4062,40324,58119,82442,2058,71436,72954,99314,96242,96255,96256,96257,101817,101818,101819]
+8	4062	[51106,78080,33364,98665,90976,78086,4062,82442,2058,71436,72954,99314,3020,101817,101818,101819]
+9	40324	[78080,40216,33364,90976,78086,4062,40324,54608,58119,82442,72954,96242,96255,96256,96257,101817,101819]
+10	54608	[51106,78080,98665,90976,4062,40324,54608,82442,2058,71436,3020,96242,101817,101818]
+11	58119	[78080,40216,33364,78086,4062,40324,58119,82442,2058,71436,72954,96242,96255,96256,96257,101819]
+12	82442	[78080,33364,78086,40324,82442,2058,72954,99314,96242,101817,101818,101819]
+13	78443	[98665,90976,4062,54608,78443,2058,71436,96242,101818,101819]
+14	2058	[51106,78080,90976,78086,40324,58119,2058,99314,3020,96242,101817,101818,101819]
+15	71436	[78080,40216,78086,40324,71436,99314,96242,101819]
+16	72954	[40216,98665,40324,58119,71436,72954,99314,101818,101819]
+17	99314	[51106,78080,40216,33364,90976,78086,4062,78443,71436,72954,99314,3020,101817,101819]
+18	3020	[51106,78080,33364,90976,54608,58119,82442,2058,71436,72954,3020,96255,96257]
+19	96242	[78080,40216,33364,98665,78086,4062,82442,78443,2058,72954,99314,96242,96255,96256,96257,101817,101819]
+20	96255	[51106,78080,40216,98665,90976,78086,4062,40324,78443,71436,99314,3020,96242,96255,101817,101818,101819]
+21	96256	[51106,78080,40216,98665,90976,78086,4062,40324,78443,71436,3020,96242,96255,96256,101817,101818,101819]
+22	96257	[51106,40216,98665,90976,78086,4062,40324,78443,71436,99314,3020,96242,96255,96257,101817,101818,101819]
+23	101817	[51106,40216,98665,78086,4062,54608,58119,78443,2058,99314,3020,96255,96257,101817]
+24	101818	[51106,78080,40216,33364,98665,90976,78086,4062,58119,82442,78443,2058,71436,72954,99314,3020,96255,96257,101817,101818]
+25	101819	[51106,78080,40216,90976,78086,4062,40324,54608,58119,82442,2058,71436,3020,96242,96255,96257,101817,101819]
+\.
+
+
+--
+-- Name: dashboard_grangerconns_id_seq; Type: SEQUENCE SET; Schema: public; Owner: riskdash
+--
+
+SELECT pg_catalog.setval('dashboard_grangerconns_id_seq', 25, true);
+
+
+--
 -- Data for Name: dashboard_summarystatistics; Type: TABLE DATA; Schema: public; Owner: riskdash
 --
 
@@ -1735,6 +2043,7 @@ COPY django_content_type (id, name, app_label, model) FROM stdin;
 6	session	sessions	session
 10	sum statistics	dashboard	sumstatistics
 14	cum rf	dashboard	cumrf
+20	granger causality conn	dashboard	grangercausalityconn
 \.
 
 
@@ -1742,7 +2051,7 @@ COPY django_content_type (id, name, app_label, model) FROM stdin;
 -- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: riskdash
 --
 
-SELECT pg_catalog.setval('django_content_type_id_seq', 14, true);
+SELECT pg_catalog.setval('django_content_type_id_seq', 20, true);
 
 
 --
@@ -1871,6 +2180,46 @@ ALTER TABLE ONLY dashboard_crf
 
 ALTER TABLE ONLY dashboard_cumrf
     ADD CONSTRAINT dashboard_cumrf_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: dashboard_granger_pkey; Type: CONSTRAINT; Schema: public; Owner: riskdash; Tablespace: 
+--
+
+ALTER TABLE ONLY dashboard_granger
+    ADD CONSTRAINT dashboard_granger_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: dashboard_grangercausality_pkey; Type: CONSTRAINT; Schema: public; Owner: riskdash; Tablespace: 
+--
+
+ALTER TABLE ONLY dashboard_grangercausality
+    ADD CONSTRAINT dashboard_grangercausality_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: dashboard_grangercausalityconn_pkey; Type: CONSTRAINT; Schema: public; Owner: riskdash; Tablespace: 
+--
+
+ALTER TABLE ONLY dashboard_grangercausalityconn
+    ADD CONSTRAINT dashboard_grangercausalityconn_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: dashboard_grangercausalityconns_pkey; Type: CONSTRAINT; Schema: public; Owner: riskdash; Tablespace: 
+--
+
+ALTER TABLE ONLY dashboard_grangercausalityconns
+    ADD CONSTRAINT dashboard_grangercausalityconns_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: dashboard_grangerconns_pkey; Type: CONSTRAINT; Schema: public; Owner: riskdash; Tablespace: 
+--
+
+ALTER TABLE ONLY dashboard_grangerconns
+    ADD CONSTRAINT dashboard_grangerconns_pkey PRIMARY KEY (id);
 
 
 --

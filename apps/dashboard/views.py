@@ -2,7 +2,7 @@ import json
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse
-from apps.dashboard.models import SumStatistics, CumRF
+from apps.dashboard.models import SumStatistics, CumRF, GrangerCausalityConn
 
 def returns_stats(request):	
 	stats = SumStatistics.objects.all()
@@ -51,3 +51,7 @@ def crf_data(request):
 	data = [ {'date': p.date, 'price': p.frac} for p in points]
 
 	return HttpResponse(json.dumps(data), mimetype='application/json')
+
+def granger_data(request):
+	lines = GrangerCausalityConn.objects.all()
+	return HttpResponse(json.dumps(lines[0].imports), mimetype='application/json')
