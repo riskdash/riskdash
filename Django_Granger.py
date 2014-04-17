@@ -14,7 +14,7 @@ if __name__ == '__main__':
     	firm_dict = {}
     	imports = []
     	for j in range(0, len(p_values[i])):
-    		if p_values[i][j] > 0.95:
+    		if p_values[i][j] < 0.05:
     			full_string = ""
     			if j < 25:
     				full_string = "root.bank."

@@ -9,7 +9,7 @@ import datetime as dt
 from HacRegression import HAC_Regression
 from time import time
 from DataTools import getNames
-from DatabaseFiller.DatabaseTools import addMonths
+from ..DatabaseFiller.DatabaseTools import addMonths
 import pickle, sys
 
 '''
@@ -55,7 +55,7 @@ npNArray:  the names of the companies
 p_values:  the matrix of p-values
 
 '''
-def getGCPvalues(aDate= dt.date(2013, 01, 01)):
+def getGCPvalues(aDate= dt.date(2013, 12, 31)):
     
     tick = time()
     npNArray, npDArray = getNames(aDate)

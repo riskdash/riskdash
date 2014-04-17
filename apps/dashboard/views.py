@@ -54,4 +54,4 @@ def crf_data(request):
 
 def granger_data(request):
 	lines = GrangerCausalityConn.objects.all()
-	return HttpResponse(json.dumps(lines[3].imports), mimetype='application/json')
+	return HttpResponse(json.dumps(lines[4].imports), mimetype='application/json')
