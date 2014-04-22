@@ -9,7 +9,7 @@ import datetime as dt
 from HacRegression import HAC_Regression
 from time import time
 from DataTools import getNames
-from ..DatabaseFiller.DatabaseTools import addMonths
+from DatabaseFiller.DatabaseTools import addMonths
 import pickle, sys
 
 '''
@@ -55,7 +55,7 @@ npNArray:  the names of the companies
 p_values:  the matrix of p-values
 
 '''
-def getGCPvalues(aDate= dt.date(2013, 12, 31)):
+def getGCPvalues(aDate):
     
     tick = time()
     npNArray, npDArray = getNames(aDate)
@@ -75,7 +75,7 @@ def generateAllGrangerMonths():
     iDate = dt.datetime(1996, 1, 31)
     while iDate < now:
         try:
-            npNArray, p_values = getGCPvalues(aDate= dt.date(2013, 01, 01))
+            npNArray, p_values = getGCPvalues(iDate)
             precalculatedDict[iDate]= [npNArray, p_values]
             iDate = addMonths(iDate, 1)
             print iDate.strftime('%Y/%m/%d %H:%M:%S')
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     #pullSummarizedStatistics()
     #genRollAutocorr()
     aDate = dt.datetime(2013, 12, 1)
-    npNar1, npDar1 = getGCPvalues(aDate)
+    #npNar1, npDar1 = getGCPvalues(aDate)
     
     '''
     Dataoutput = open('GrangerData.pkl', 'rb')
@@ -101,8 +101,12 @@ if __name__ == '__main__':
     '''
     #names, p_values= getGCPvalues()
     #print p_values
-    #generateAllGrangerMonths()
-    Nameoutput = open('GrangerNames.pkl', 'rb')
-    npNArray = pickle.load(Nameoutput)
-    print npNArray
-    print npNar1
+    generateAllGrangerMonths()
+    Nameoutput = open('GrangerPrecomputed.pkl', 'rb')
+    preCalcDict = pickle.load(Nameoutput)
+    a = preCalcDict.keys()[1] #gets a date
+    data = preCalcDict[a]
+    print data[0] #name array
+    print data[1] #data matrix
+    
+    

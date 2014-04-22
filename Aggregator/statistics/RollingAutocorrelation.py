@@ -33,7 +33,7 @@ def genRollAutocorr():
             sampleY = ROR[i-36:i]
             #sampleX = Date[i]
             r, se = autocorr(sampleY, 1)
-            rollingac.append(r)
+            rollingac.append(r[-1])
             upbound.append(r+1.96*se)
             lowbound.append(r-1.96*se)
         rAC = np.array(rollingac)
