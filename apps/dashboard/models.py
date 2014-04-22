@@ -33,3 +33,10 @@ class GrangerCausalityConn(models.Model):
 
 	def __unicode__(self):
 		return str(self.imports)
+
+class GrangerRange(models.Model):
+	date = models.CharField(max_length=100)
+	imports = JSONField()
+
+	def __unicode__(self):
+		return str(self.date)
