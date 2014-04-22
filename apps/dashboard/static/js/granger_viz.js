@@ -1,4 +1,5 @@
 var draw_granger = function(date) {
+  $('#chart2').html('tension: <input type="range" min="0" max="100" value="85">');
   var w = 1280,
       h = 800,
       rx = w / 2,

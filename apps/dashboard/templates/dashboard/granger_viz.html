@@ -13,7 +13,7 @@
       <input type="text" data-slider="true" data-slider-range="0,20500" data-slider-step="100"data-slider-snap="true">
     </div>
     
-    <div id="chart2">tension: <input type="range" min="0" max="100" value="85"></div>
+    <div id="chart2"></div>
 
 
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -33,7 +33,7 @@
         $(this)
           .nextAll(".output:first")
             .html(months[Number(data.value/100)]);
-        draw_granger(months[Number(data.value/100)] + "");
+            draw_granger(months[Number(data.value/100)])
       });
     </script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/granger_viz.js"></script>
