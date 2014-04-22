@@ -1,24 +1,10 @@
 import numpy as np
 import pickle
-from apps.dashboard.models import GrangerRange
+from apps.dashboard.models import GrangerRan
 
 if __name__ == '__main__':
     Nameoutput = open('Aggregator/statistics/GrangerPrecomputed.pkl', 'rb')
     preCalcDict = pickle.load(Nameoutput)
-    text_file = open("Output.txt", "w")
-    text_file.write("%s" % str(preCalcDict))
-    text_file.close()
-
-    a = preCalcDict.keys()[0]
-    prev_vals = preCalcDict[a][1]
-    for k in preCalcDict:
-        print "For Key " + str(k)
-        if preCalcDict[k][1].all() == prev_vals.all():
-            print "True"
-        else:
-            print "False"
-        prev_vals = preCalcDict[k][1]
-
     for k in preCalcDict:
         #print "Date: " + str(k)
         #print k.strftime("%m/%Y")
@@ -58,8 +44,8 @@ if __name__ == '__main__':
             dict_list.append(firm_dict)
         #print "JSON Dictionary: "  + str(dict_list)
 
-        entry = GrangerRange(date=k.strftime("%m/%Y"),imports=dict_list)
-        #entry.save()
-    #print GrangerRange.objects.all()
+        entry = GrangerRan(date=k.strftime("%m/%Y"),imports=dict_list)
+        entry.save()
+    print GrangerRan.objects.all()
 
 

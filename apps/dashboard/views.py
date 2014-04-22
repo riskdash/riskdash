@@ -2,7 +2,7 @@ import json
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse
-from apps.dashboard.models import SumStatistics, CumRF, GrangerCausalityConn, GrangerRange
+from apps.dashboard.models import SumStatistics, CumRF, GrangerCausalityConn, GrangerRan
 
 def returns_stats(request):	
 	stats = SumStatistics.objects.all()
@@ -54,5 +54,5 @@ def crf_data(request):
 
 def granger_data(request):
 	date = request.GET['date']
-	lines = GrangerRange.objects.get(date=date)
+	lines = GrangerRan.objects.get(date=date)
 	return HttpResponse(json.dumps(lines.imports), mimetype='application/json')
