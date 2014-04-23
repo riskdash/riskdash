@@ -47,3 +47,10 @@ class LiqQStat(models.Model):
 
 	def __unicode__(self):
 		return str(self.date)
+
+class AggIlliq(models.Model):
+	date = models.CharField(max_length=100)
+	val = models.FloatField()
+
+	def __unicode__(self):
+		return str(self.date)

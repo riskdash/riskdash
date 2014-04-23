@@ -48,7 +48,7 @@ var focus = svg.append("g")
 var context = svg.append("g")
     .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
 
-d3.json("/pca/data/", function(error, data) {
+d3.json("/illiq_viz/data/", function(error, data) {
 
   data.forEach(function(d) {
     d.date = parseDate(d.date);
@@ -56,13 +56,13 @@ d3.json("/pca/data/", function(error, data) {
   });
 
   x.domain(d3.extent(data.map(function(d) { return d.date; })));
-  y.domain([0.6, d3.max(data.map(function(d) { return d.price; }))]);
+  y.domain([-0.5, d3.max(data.map(function(d) { return d.price; }))]);
   x2.domain(x.domain());
   y2.domain(y.domain());
 
   focus.append("path")
       .datum(data)
-      .attr("clip-path", "url(#clipq)")
+      .attr("clip-path", "url(#clip)")
       .attr("d", area);
 
   focus.append("g")

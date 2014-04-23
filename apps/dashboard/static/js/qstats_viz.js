@@ -37,7 +37,7 @@ var svg = d3.select("#q-chart").append("svg")
     .attr("height", height + margin.top + margin.bottom);
 
 svg.append("defs").append("clipPath")
-    .attr("id", "clipq")
+    .attr("id", "clip")
   .append("rect")
     .attr("width", width)
     .attr("height", height);
@@ -56,7 +56,7 @@ d3.json("/sercorr/q-data/", function(error, data) {
   });
 
   x.domain(d3.extent(data.map(function(d) { return d.date; })));
-  y.domain([0.6, d3.max(data.map(function(d) { return d.price; }))]);
+  y.domain([0, d3.max(data.map(function(d) { return d.price; }))]);
   x2.domain(x.domain());
   y2.domain(y.domain());
 
