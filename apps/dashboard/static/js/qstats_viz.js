@@ -37,7 +37,7 @@ var svg = d3.select("#q-chart").append("svg")
     .attr("height", height + margin.top + margin.bottom);
 
 svg.append("defs").append("clipPath")
-    .attr("id", "clip")
+    .attr("id", "clipq")
   .append("rect")
     .attr("width", width)
     .attr("height", height);
