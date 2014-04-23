@@ -12,4 +12,5 @@ urlpatterns = patterns('',
 	url(r'pca/data/$', views.crf_data),
 	url(r'returns/$', views.returns_stats),
 	url(r'sercorr/$', TemplateView.as_view(template_name='dashboard/sercorr.html')),
+	url(r'sercorr/q-data/$', views.qstats_data),
 )
