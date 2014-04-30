@@ -9,6 +9,9 @@ from Autocorrelation import autocorr
 import datetime as dt
 from DatabaseFiller.DatabaseTools import addMonths
 import pickle, sys
+import numpy as np
+from scipy.stats import chi2
+
 '''
 Generate the Q-statistic from the F7.1 in the survey analytics.  Takes the 6 autocorrelation coefficients, 
 and generates the Q statistic for the top 25 hedge funds. 
@@ -33,6 +36,7 @@ def Qstatistic(endDate, n=25):
 
 '''
 Generate the rolling QStat for the specified number of companies
+returns the p-value of the average for easy to understand 
 '''
 def rollQStat(n=25):
     now = dt.datetime.now()
@@ -41,7 +45,8 @@ def rollQStat(n=25):
     while iDate < now:
         try:
             nameArray, Qarray = Qstatistic(iDate)
-            precalculatedDict[iDate]= [nameArray, Qarray]
+            p_values = [chi2.pdf(x, 6) for x in Qarray]
+            precalculatedDict[iDate]= [p_values, Qarray]
             iDate = addMonths(iDate, 1)
             print iDate.strftime('%Y/%m/%d %H:%M:%S')
         except:
@@ -86,7 +91,7 @@ def rollAggIlliquid(n=25):
     pickle.dump(precalculatedDict, Nameoutput)
 
 if __name__ == '__main__':
-    #rollQStat()
+    rollQStat()
     print "q stat done"
-    rollAggIlliquid()
+    #rollAggIlliquid()
     print "agg Illiquid done"
