@@ -6,6 +6,8 @@
         <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet" media="screen">
 
         <link href="{{ STATIC_URL }}css/index.css" rel="stylesheet" media="screen">
+        <link href="{{ STATIC_URL }}css/jquery.thumbs.css" rel="stylesheet" media="screen">
+
         
 </head>
 
@@ -38,8 +40,12 @@
 
         <div class="span10">
           <div class="hero-unit">
-            <h1> Questions? </h1>
-            <h3> Email us at riskdash [at] mit.edu </h3>
+            <h1> Other Resources: </h1>
+            <br>
+            <br>
+            <a href="http://vlab.stern.nyu.edu/welcome/risk/" class="thumb"><img src="{{ STATIC_URL }}images/nyu.png" alt="NYU Stern V-Lab"/></a>
+            <a href="http://www.esrb.europa.eu/home/html/index.en.html" class="thumb"><img src="{{ STATIC_URL }}images/esrb.png" alt="European Systemic Risk Board"/></a>
+            <a href="http://www.systemicrisk.ac.uk/" class="thumb"><img src="{{ STATIC_URL }}images/LSE.png" alt="LSE SRC"/></a>
           </div>
         </div>
       </div>
@@ -50,5 +56,13 @@
       </footer>
 
     </div><!--/.fluid-container-->
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.thumbs.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".thumb").thumbs();
+  });
+</script>
 </body>
 </html>

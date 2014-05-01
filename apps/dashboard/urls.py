@@ -15,4 +15,5 @@ urlpatterns = patterns('',
 	url(r'sercorr/q-data/$', views.qstats_data),
 	url(r'illiq_viz/$', TemplateView.as_view(template_name='dashboard/illiq_viz.html')),
 	url(r'illiq_viz/data/$', views.aggIlliq_data),
+	url(r'other/$', TemplateView.as_view(template_name='dashboard/other.html')),
 )
