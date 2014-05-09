@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head>
+        <title>Systemic Risk Dashboard</title>
+        <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+        <!--<link href="{{ STATIC_URL }}css/main.css" rel="stylesheet" media="screen">-->
+
+        <link href="{{ STATIC_URL }}css/index.css" rel="stylesheet" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/illiq_viz.css"/>
+        <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/qstats_viz.css"/>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+          <link rel="apple-touch-icon" href="/apple-touch-icon-60x60-precomposed.png" /><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png" /><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76-precomposed.png" /><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png" /><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120-precomposed.png" /><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png" /><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152-precomposed.png" />
+
+        <link rel="stylesheet" type="text/css" href="http://vlab.stern.nyu.edu/css/analysis/risk/aa7c0b1849f5f26d45bf8ba21ad99570a6eff204f7b77d12ed308c966ce7f2fbd360b75f70eec8bc1852b68331f884638e46d189d041db41f82a3fa6b8f6425d" />
+        <!--[if lt IE 8]>
+            <link rel="stylesheet" type="text/css" href="http://vlab.stern.nyu.edu/public/styles/ie6-2.4.9.min.css" />
+        <![endif]-->
+
+<script type="text/javascript">var VLAB_HOME="http://vlab.stern.nyu.edu",p=true,id=1,top_sid=7,dataCache={"2000-01-31":[],"2000-02-29":[],"2000-03-31":[],"2000-04-28":[],"2000-05-31":[],"2000-06-30":[],"2000-07-31":[],"2000-08-31":[],"2000-09-29":[],"2000-10-31":[],"2000-11-30":[],"2000-12-29":[],"2001-01-31":[],"2001-02-28":[],"2001-03-30":[],"2001-04-30":[],"2001-05-31":[],"2001-06-29":[],"2001-07-31":[],"2001-08-31":[],"2001-09-28":[],"2001-10-31":[],"2001-11-30":[],"2001-12-31":[],"2002-01-31":[],"2002-02-28":[],"2002-03-28":[],"2002-04-30":[],"2002-05-31":[],"2002-06-28":[],"2002-07-31":[],"2002-08-30":[],"2002-09-30":[],"2002-10-31":[],"2002-11-29":[],"2002-12-31":[],"2003-01-31":[],"2003-02-28":[],"2003-03-31":[],"2003-04-30":[],"2003-05-30":[],"2003-06-30":[],"2003-07-31":[],"2003-08-29":[],"2003-09-30":[],"2003-10-31":[],"2003-11-28":[],"2003-12-31":[],"2004-01-30":[],"2004-02-27":[],"2004-03-31":[],"2004-04-30":[],"2004-05-28":[],"2004-06-30":[],"2004-07-30":[],"2004-08-31":[],"2004-09-30":[],"2004-10-29":[],"2004-11-30":[],"2004-12-31":[],"2005-01-31":[],"2005-02-28":[],"2005-03-31":[],"2005-04-29":[],"2005-05-31":[],"2005-06-30":[],"2005-07-29":[],"2005-08-31":[],"2005-09-30":[],"2005-10-31":[],"2005-11-30":[],"2005-12-30":[],"2006-01-31":[],"2006-02-28":[],"2006-03-31":[],"2006-04-28":[],"2006-05-31":[],"2006-06-30":[],"2006-07-31":[],"2006-08-31":[],"2006-09-29":[],"2006-10-31":[],"2006-11-30":[],"2006-12-29":[],"2007-01-31":[],"2007-02-28":[],"2007-03-30":[],"2007-04-30":[],"2007-05-31":[],"2007-06-29":[],"2007-07-31":[],"2007-08-31":[],"2007-09-28":[],"2007-10-31":[],"2007-11-30":[],"2007-12-31":[],"2008-01-31":[],"2008-02-29":[],"2008-03-31":[],"2008-04-30":[],"2008-05-30":[],"2008-06-30":[],"2008-07-31":[],"2008-08-29":[],"2008-09-30":[],"2008-10-31":[],"2008-11-28":[],"2008-12-31":[],"2009-01-30":[],"2009-02-27":[],"2009-03-31":[],"2009-04-30":[],"2009-05-29":[],"2009-06-30":[],"2009-07-31":[],"2009-08-31":[],"2009-09-30":[],"2009-10-30":[],"2009-11-30":[],"2009-12-31":[],"2010-01-29":[],"2010-02-26":[],"2010-03-31":[],"2010-04-30":[],"2010-05-28":[],"2010-06-30":[],"2010-07-30":[],"2010-08-31":[],"2010-09-30":[],"2010-10-29":[],"2010-11-30":[],"2010-12-31":[],"2011-01-31":[],"2011-02-28":[],"2011-03-31":[],"2011-04-29":[],"2011-05-31":[],"2011-06-30":[],"2011-07-29":[],"2011-08-31":[],"2011-09-30":[],"2011-10-31":[],"2011-11-30":[],"2011-12-30":[],"2012-01-31":[],"2012-02-29":[],"2012-03-30":[],"2012-04-30":[],"2012-05-31":[],"2012-06-29":[],"2012-07-31":[],"2012-08-31":[],"2012-09-28":[],"2012-10-31":[],"2012-11-30":[],"2012-12-31":[],"2013-01-31":[],"2013-02-28":[],"2013-03-28":[],"2013-04-30":[],"2013-05-31":[],"2013-06-28":[],"2013-07-31":[],"2013-08-30":[],"2013-09-30":[],"2013-10-31":[],"2013-11-29":[],"2013-12-31":[],"2014-01-31":[],"2014-02-28":[],"2014-03-31":[],"2014-04-30":[],"2014-05-02":[]},availDates=["2000-01-31","2000-02-29","2000-03-31","2000-04-28","2000-05-31","2000-06-30","2000-07-31","2000-08-31","2000-09-29","2000-10-31","2000-11-30","2000-12-29","2001-01-31","2001-02-28","2001-03-30","2001-04-30","2001-05-31","2001-06-29","2001-07-31","2001-08-31","2001-09-28","2001-10-31","2001-11-30","2001-12-31","2002-01-31","2002-02-28","2002-03-28","2002-04-30","2002-05-31","2002-06-28","2002-07-31","2002-08-30","2002-09-30","2002-10-31","2002-11-29","2002-12-31","2003-01-31","2003-02-28","2003-03-31","2003-04-30","2003-05-30","2003-06-30","2003-07-31","2003-08-29","2003-09-30","2003-10-31","2003-11-28","2003-12-31","2004-01-30","2004-02-27","2004-03-31","2004-04-30","2004-05-28","2004-06-30","2004-07-30","2004-08-31","2004-09-30","2004-10-29","2004-11-30","2004-12-31","2005-01-31","2005-02-28","2005-03-31","2005-04-29","2005-05-31","2005-06-30","2005-07-29","2005-08-31","2005-09-30","2005-10-31","2005-11-30","2005-12-30","2006-01-31","2006-02-28","2006-03-31","2006-04-28","2006-05-31","2006-06-30","2006-07-31","2006-08-31","2006-09-29","2006-10-31","2006-11-30","2006-12-29","2007-01-31","2007-02-28","2007-03-30","2007-04-30","2007-05-31","2007-06-29","2007-07-31","2007-08-31","2007-09-28","2007-10-31","2007-11-30","2007-12-31","2008-01-31","2008-02-29","2008-03-31","2008-04-30","2008-05-30","2008-06-30","2008-07-31","2008-08-29","2008-09-30","2008-10-31","2008-11-28","2008-12-31","2009-01-30","2009-02-27","2009-03-31","2009-04-30","2009-05-29","2009-06-30","2009-07-31","2009-08-31","2009-09-30","2009-10-30","2009-11-30","2009-12-31","2010-01-29","2010-02-26","2010-03-31","2010-04-30","2010-05-28","2010-06-30","2010-07-30","2010-08-31","2010-09-30","2010-10-29","2010-11-30","2010-12-31","2011-01-31","2011-02-28","2011-03-31","2011-04-29","2011-05-31","2011-06-30","2011-07-29","2011-08-31","2011-09-30","2011-10-31","2011-11-30","2011-12-30","2012-01-31","2012-02-29","2012-03-30","2012-04-30","2012-05-31","2012-06-29","2012-07-31","2012-08-31","2012-09-28","2012-10-31","2012-11-30","2012-12-31","2013-01-31","2013-02-28","2013-03-28","2013-04-30","2013-05-31","2013-06-28","2013-07-31","2013-08-30","2013-09-30","2013-10-31","2013-11-29","2013-12-31","2014-01-31","2014-02-28","2014-03-31","2014-04-30","2014-05-02"],is_sim=false,fdate="2000-01-03",sdate="2012-05-02",edate="2014-05-02",last_valid_capreq={"africa":"0.08","americas":"0.08","asia":"0.08","europe":"0.055"},max_firms=0,graph_md5="&cache=bd8453795aa1dda1d0405f69b31216ee";if (p === true) {var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-12455432-3']);_gaq.push(['_trackPageview']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();}</script>
+        <script type="text/javascript" src="http://vlab.stern.nyu.edu/js/analysis/risk/03102e23349dab07fc8322dfd2144412e0fcc3ba53149127748e2b3ca3199a4ed27227ec59b82f0b359f081edcdd07b38c43fc4e15f902cf1cbda4fd63e080ec" defer="defer"></script> 
+</head>
+
+<body>        
+<body>
+
+  <div class="navbar navbar-default navbar-fixed-top">
+      <div class="navbar-inner">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Systemic Risk Dashboard</a>
+        <a class="navbar-brand" href="/about">About</a>
+      </div>
+      <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Log In</a></li>
+        </ul>
+        <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+        </form>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="alert alert-warning alert-dismissable">
+          <strong>Note: </strong> This website is still under construction.
+        </div>
+      <div class="row-fluid">
+        <div class="row-fluid">
+        <div class="span2">
+          {% include "dashboard/nav-liq.html" %}
+        </div>
+        <div class="span10">
+          <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/sercorr">Serial Correlation</a></li>
+          </ol>
+        <ul class="nav nav-tabs">
+          <li><a href="/sercorr/">Individual Hedge Fund Illiquidity</a></li>
+          <li class="active"><a href="/illiq_viz/">Aggregate Illiquidity</a></li>
+          
+        </ul>
+
+<div id="header">
+
+<span id="nav_vlab"><a href="http://vlab.stern.nyu.edu/"><span id="vlab">V-Lab</span><br/><span id="beta">BETA</span></a></span>
+
+<div id="menu">
+
+<ul id="menu_left">
+  <li><a id="vlab_home_link" href="http://vlab.stern.nyu.edu"></a> &#124;</li>
+        <li><a id="twitter" href="https://twitter.com/NYUVlab" onclick="window.open(this.href,'_blank');return false;"></a> &#124;</li>
+  <li><a href="http://w4.stern.nyu.edu/volatility" onclick="window.open(this.href,'_blank');return false;">Volatility Institute</a> &#124;</li>
+  <li><a href="http://www.stern.nyu.edu" onclick="window.open(this.href,'_blank');return false;">NYU Stern</a></li>
+</ul>
+
+<ul id="menu_right">
+  <li>Display: </li>
+  <li><a href="#">Basic &#x25BC;</a> &#124;
+    <ul>
+      <li><a href="http://vlab.stern.nyu.edu/users/preferences?lev=1&amp;url=http://vlab.stern.nyu.edu/analysis/RISK.USFIN-MR.MES">Basic</a></li>
+      <li><a href="http://vlab.stern.nyu.edu/users/preferences?lev=2&amp;url=http://vlab.stern.nyu.edu/analysis/RISK.USFIN-MR.MES">Intermediate</a></li>
+      <li><a href="http://vlab.stern.nyu.edu/users/preferences?lev=3&amp;url=http://vlab.stern.nyu.edu/analysis/RISK.USFIN-MR.MES">Experimental</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="http://vlab.stern.nyu.edu/users/login" >Sign in</a>  </li>
+</ul>
+
+</div>
+
+<div id="navigation">
+<div id="nav_docs">
+   <ul>
+      <li><a href="http://vlab.stern.nyu.edu/doc?topic=vlab" >Documentation</a> <span class="sep">&#187;</span></li>
+      <li><a href="http://vlab.stern.nyu.edu/analysis/">Analysis List</a> <span class="sep">&#187;</span> </li>
+   </ul>
+</div>
+<div id="nav_stern"><img height="60" width="218" src="http://vlab.stern.nyu.edu/public/images/sternlogo.png" id="sternlogo" alt="" /></div>
+<div id="nav_search">
+  <form id="f" action="" onsubmit="return submitSearch()">
+    <fieldset>
+    <select id="search-apps" onchange="changeData();">
+      <option value="vol">Volatility Analysis</option>
+<option value="cor">Correlation Analysis</option>
+<option value="mes">Systemic Risk Analysis</option>
+<option value="lrvol">Long Run Value at Risk</option>
+<option value="liq">Liquidity Analysis</option>
+    </select>
+
+    <select id="search-models" onchange="changeMdlData();">
+      <option value="0">Loading...</option>
+    </select>
+
+    <input type="text" onclick="$('vlab-search').focus().focus().click();" title="Search for: Volatility Analysis, Correlations Analysis, Risk Analysis, Long Run Value at Risk (VaR)" id="vlab-search" name="vlab-search" />
+    <input type="hidden" id="vlab-search-ds" name="vlab-search-ds" />
+
+    <input type="submit" value="Go" />
+
+    <div id="search-examples"></div>
+    </fieldset>
+  </form>
+</div>
+
+</div>
+
+</div>
+
+<div id="contentpane" style="display:none">
+
+  
+<h3>SYSTEMIC RISK ANALYSIS  (DYNAMIC MES) OF U.S. FINANCIALS<a class="help" href="javascript:helpPage('risk_summary');">?</a></h3>
+
+<div id="sum_prediction">
+</div>
+
+<div id="riskhome">
+<span id="riskhome_link">
+<a href="http://vlab.stern.nyu.edu/welcome/risk/">Systemic Risk Analysis Homepage</a></span>
+<span id="riskhome_update">
+last update 2014-05-09 07:38:25</span>
+</div>
+<!--
+<div class="vlab_alert">
+    Please read a brief note about <a href="javascript:helpPage('srisk_decomposition');">our new SRISK Decomposition view</a>.
+</div>
+-->
+<div id="graph_menu" class="risk_menu">
+    <ul class="topmenu">
+        <li id="cg" onclick="graphPopUp(990, 390);"><span>COPY GRAPH</span></li>
+    </ul>
+</div>
+<br />
+
+<div id="graph_header" class="risk">
+  <div id="sum_dates" class="risk">
+  <form id="dateRanges" method="get" action="#" onsubmit="updateGraph(); return false;">
+  <p id="daterange">
+  <span class="formsubject">Date Range:</span> from <input size="10" id="startDate" class="date-pick" onchange="setStartDate(this.value); updateGraph(); return false" /> to <input size="10" id="endDate" class="date-pick" onchange="setEndDate(this.value); updateGraph(); return false" />
+        </p>
+
+  <p id="datesize" class="risk">
+    <span class="formsubject">Window:</span>
+    <a href="#" onclick="setDays(3, 'm');   updateGraph(); return false">3m</a> &middot;
+    <a href="#" onclick="setDays(6, 'm');  updateGraph(); return false">6m</a> &middot;
+    <a href="#" onclick="setDays(1, 'y');  updateGraph(); return false">1y</a> &middot;
+    <a href="#" onclick="setDays(2, 'y');  updateGraph(); return false">2y</a> &middot;
+    <a href="#" onclick="setDays(5, 'y'); updateGraph(); return false">5y</a> &middot; 
+    <a href="#" onclick="setDays(0, 'all');    updateGraph(); return false">all</a>
+  </p>
+  </form>
+  </div>
+</div>
+
+<div id="graph_div">
+  <img id="risk-graph" src="http://vlab.stern.nyu.edu/public/images/blank.gif" alt="Graph" />
+</div>
+
+<div id="risk-left">
+
+<form action="#" method="get">
+<h3>
+Systemic Risk Rankings 
+  for
+  <select id="dateselect" name="date" onchange="adjustDiffSelect(); get_rl_data();" style="font-size: 8pt;">
+      <option  value="2000-02-29">2000-02-29</option>    <option  value="2000-03-31">2000-03-31</option>    <option  value="2000-04-28">2000-04-28</option>    <option  value="2000-05-31">2000-05-31</option>    <option  value="2000-06-30">2000-06-30</option>    <option  value="2000-07-31">2000-07-31</option>    <option  value="2000-08-31">2000-08-31</option>    <option  value="2000-09-29">2000-09-29</option>    <option  value="2000-10-31">2000-10-31</option>    <option  value="2000-11-30">2000-11-30</option>    <option  value="2000-12-29">2000-12-29</option>    <option  value="2001-01-31">2001-01-31</option>    <option  value="2001-02-28">2001-02-28</option>    <option  value="2001-03-30">2001-03-30</option>    <option  value="2001-04-30">2001-04-30</option>    <option  value="2001-05-31">2001-05-31</option>    <option  value="2001-06-29">2001-06-29</option>    <option  value="2001-07-31">2001-07-31</option>    <option  value="2001-08-31">2001-08-31</option>    <option  value="2001-09-28">2001-09-28</option>    <option  value="2001-10-31">2001-10-31</option>    <option  value="2001-11-30">2001-11-30</option>    <option  value="2001-12-31">2001-12-31</option>    <option  value="2002-01-31">2002-01-31</option>    <option  value="2002-02-28">2002-02-28</option>    <option  value="2002-03-28">2002-03-28</option>    <option  value="2002-04-30">2002-04-30</option>    <option  value="2002-05-31">2002-05-31</option>    <option  value="2002-06-28">2002-06-28</option>    <option  value="2002-07-31">2002-07-31</option>    <option  value="2002-08-30">2002-08-30</option>    <option  value="2002-09-30">2002-09-30</option>    <option  value="2002-10-31">2002-10-31</option>    <option  value="2002-11-29">2002-11-29</option>    <option  value="2002-12-31">2002-12-31</option>    <option  value="2003-01-31">2003-01-31</option>    <option  value="2003-02-28">2003-02-28</option>    <option  value="2003-03-31">2003-03-31</option>    <option  value="2003-04-30">2003-04-30</option>    <option  value="2003-05-30">2003-05-30</option>    <option  value="2003-06-30">2003-06-30</option>    <option  value="2003-07-31">2003-07-31</option>    <option  value="2003-08-29">2003-08-29</option>    <option  value="2003-09-30">2003-09-30</option>    <option  value="2003-10-31">2003-10-31</option>    <option  value="2003-11-28">2003-11-28</option>    <option  value="2003-12-31">2003-12-31</option>    <option  value="2004-01-30">2004-01-30</option>    <option  value="2004-02-27">2004-02-27</option>    <option  value="2004-03-31">2004-03-31</option>    <option  value="2004-04-30">2004-04-30</option>    <option  value="2004-05-28">2004-05-28</option>    <option  value="2004-06-30">2004-06-30</option>    <option  value="2004-07-30">2004-07-30</option>    <option  value="2004-08-31">2004-08-31</option>    <option  value="2004-09-30">2004-09-30</option>    <option  value="2004-10-29">2004-10-29</option>    <option  value="2004-11-30">2004-11-30</option>    <option  value="2004-12-31">2004-12-31</option>    <option  value="2005-01-31">2005-01-31</option>    <option  value="2005-02-28">2005-02-28</option>    <option  value="2005-03-31">2005-03-31</option>    <option  value="2005-04-29">2005-04-29</option>    <option  value="2005-05-31">2005-05-31</option>    <option  value="2005-06-30">2005-06-30</option>    <option  value="2005-07-29">2005-07-29</option>    <option  value="2005-08-31">2005-08-31</option>    <option  value="2005-09-30">2005-09-30</option>    <option  value="2005-10-31">2005-10-31</option>    <option  value="2005-11-30">2005-11-30</option>    <option  value="2005-12-30">2005-12-30</option>    <option  value="2006-01-31">2006-01-31</option>    <option  value="2006-02-28">2006-02-28</option>    <option  value="2006-03-31">2006-03-31</option>    <option  value="2006-04-28">2006-04-28</option>    <option  value="2006-05-31">2006-05-31</option>    <option  value="2006-06-30">2006-06-30</option>    <option  value="2006-07-31">2006-07-31</option>    <option  value="2006-08-31">2006-08-31</option>    <option  value="2006-09-29">2006-09-29</option>    <option  value="2006-10-31">2006-10-31</option>    <option  value="2006-11-30">2006-11-30</option>    <option  value="2006-12-29">2006-12-29</option>    <option  value="2007-01-31">2007-01-31</option>    <option  value="2007-02-28">2007-02-28</option>    <option  value="2007-03-30">2007-03-30</option>    <option  value="2007-04-30">2007-04-30</option>    <option  value="2007-05-31">2007-05-31</option>    <option  value="2007-06-29">2007-06-29</option>    <option  value="2007-07-31">2007-07-31</option>    <option  value="2007-08-31">2007-08-31</option>    <option  value="2007-09-28">2007-09-28</option>    <option  value="2007-10-31">2007-10-31</option>    <option  value="2007-11-30">2007-11-30</option>    <option  value="2007-12-31">2007-12-31</option>    <option  value="2008-01-31">2008-01-31</option>    <option  value="2008-02-29">2008-02-29</option>    <option  value="2008-03-31">2008-03-31</option>    <option  value="2008-04-30">2008-04-30</option>    <option  value="2008-05-30">2008-05-30</option>    <option  value="2008-06-30">2008-06-30</option>    <option  value="2008-07-31">2008-07-31</option>    <option  value="2008-08-29">2008-08-29</option>    <option  value="2008-09-30">2008-09-30</option>    <option  value="2008-10-31">2008-10-31</option>    <option  value="2008-11-28">2008-11-28</option>    <option  value="2008-12-31">2008-12-31</option>    <option  value="2009-01-30">2009-01-30</option>    <option  value="2009-02-27">2009-02-27</option>    <option  value="2009-03-31">2009-03-31</option>    <option  value="2009-04-30">2009-04-30</option>    <option  value="2009-05-29">2009-05-29</option>    <option  value="2009-06-30">2009-06-30</option>    <option  value="2009-07-31">2009-07-31</option>    <option  value="2009-08-31">2009-08-31</option>    <option  value="2009-09-30">2009-09-30</option>    <option  value="2009-10-30">2009-10-30</option>    <option  value="2009-11-30">2009-11-30</option>    <option  value="2009-12-31">2009-12-31</option>    <option  value="2010-01-29">2010-01-29</option>    <option  value="2010-02-26">2010-02-26</option>    <option  value="2010-03-31">2010-03-31</option>    <option  value="2010-04-30">2010-04-30</option>    <option  value="2010-05-28">2010-05-28</option>    <option  value="2010-06-30">2010-06-30</option>    <option  value="2010-07-30">2010-07-30</option>    <option  value="2010-08-31">2010-08-31</option>    <option  value="2010-09-30">2010-09-30</option>    <option  value="2010-10-29">2010-10-29</option>    <option  value="2010-11-30">2010-11-30</option>    <option  value="2010-12-31">2010-12-31</option>    <option  value="2011-01-31">2011-01-31</option>    <option  value="2011-02-28">2011-02-28</option>    <option  value="2011-03-31">2011-03-31</option>    <option  value="2011-04-29">2011-04-29</option>    <option  value="2011-05-31">2011-05-31</option>    <option  value="2011-06-30">2011-06-30</option>    <option  value="2011-07-29">2011-07-29</option>    <option  value="2011-08-31">2011-08-31</option>    <option  value="2011-09-30">2011-09-30</option>    <option  value="2011-10-31">2011-10-31</option>    <option  value="2011-11-30">2011-11-30</option>    <option  value="2011-12-30">2011-12-30</option>    <option  value="2012-01-31">2012-01-31</option>    <option  value="2012-02-29">2012-02-29</option>    <option  value="2012-03-30">2012-03-30</option>    <option  value="2012-04-30">2012-04-30</option>    <option  value="2012-05-31">2012-05-31</option>    <option  value="2012-06-29">2012-06-29</option>    <option  value="2012-07-31">2012-07-31</option>    <option  value="2012-08-31">2012-08-31</option>    <option  value="2012-09-28">2012-09-28</option>    <option  value="2012-10-31">2012-10-31</option>    <option  value="2012-11-30">2012-11-30</option>    <option  value="2012-12-31">2012-12-31</option>    <option  value="2013-01-31">2013-01-31</option>    <option  value="2013-02-28">2013-02-28</option>    <option  value="2013-03-28">2013-03-28</option>    <option  value="2013-04-30">2013-04-30</option>    <option  value="2013-05-31">2013-05-31</option>    <option  value="2013-06-28">2013-06-28</option>    <option  value="2013-07-31">2013-07-31</option>    <option  value="2013-08-30">2013-08-30</option>    <option  value="2013-09-30">2013-09-30</option>    <option  value="2013-10-31">2013-10-31</option>    <option  value="2013-11-29">2013-11-29</option>    <option  value="2013-12-31">2013-12-31</option>    <option  value="2014-01-31">2014-01-31</option>    <option  value="2014-02-28">2014-02-28</option>    <option  value="2014-03-31">2014-03-31</option>    <option  value="2014-04-30">2014-04-30</option>    <option selected="selected" value="2014-05-02">2014-05-02</option> </select>
+  <input id="diff-check" type="checkbox" onclick="updateDiffCheck(); get_rl_data()" />
+  <label for="diff-check">View changes </label>
+  <label id="diff-select-label" for="diff-select">since: </label>
+  <select id="diff-select" name="date" onchange="get_rl_data()" style="font-size: 8pt;">
+      <option  value="2000-01-31">2000-01-31</option>    <option  value="2000-02-29">2000-02-29</option>    <option  value="2000-03-31">2000-03-31</option>    <option  value="2000-04-28">2000-04-28</option>    <option  value="2000-05-31">2000-05-31</option>    <option  value="2000-06-30">2000-06-30</option>    <option  value="2000-07-31">2000-07-31</option>    <option  value="2000-08-31">2000-08-31</option>    <option  value="2000-09-29">2000-09-29</option>    <option  value="2000-10-31">2000-10-31</option>    <option  value="2000-11-30">2000-11-30</option>    <option  value="2000-12-29">2000-12-29</option>    <option  value="2001-01-31">2001-01-31</option>    <option  value="2001-02-28">2001-02-28</option>    <option  value="2001-03-30">2001-03-30</option>    <option  value="2001-04-30">2001-04-30</option>    <option  value="2001-05-31">2001-05-31</option>    <option  value="2001-06-29">2001-06-29</option>    <option  value="2001-07-31">2001-07-31</option>    <option  value="2001-08-31">2001-08-31</option>    <option  value="2001-09-28">2001-09-28</option>    <option  value="2001-10-31">2001-10-31</option>    <option  value="2001-11-30">2001-11-30</option>    <option  value="2001-12-31">2001-12-31</option>    <option  value="2002-01-31">2002-01-31</option>    <option  value="2002-02-28">2002-02-28</option>    <option  value="2002-03-28">2002-03-28</option>    <option  value="2002-04-30">2002-04-30</option>    <option  value="2002-05-31">2002-05-31</option>    <option  value="2002-06-28">2002-06-28</option>    <option  value="2002-07-31">2002-07-31</option>    <option  value="2002-08-30">2002-08-30</option>    <option  value="2002-09-30">2002-09-30</option>    <option  value="2002-10-31">2002-10-31</option>    <option  value="2002-11-29">2002-11-29</option>    <option  value="2002-12-31">2002-12-31</option>    <option  value="2003-01-31">2003-01-31</option>    <option  value="2003-02-28">2003-02-28</option>    <option  value="2003-03-31">2003-03-31</option>    <option  value="2003-04-30">2003-04-30</option>    <option  value="2003-05-30">2003-05-30</option>    <option  value="2003-06-30">2003-06-30</option>    <option  value="2003-07-31">2003-07-31</option>    <option  value="2003-08-29">2003-08-29</option>    <option  value="2003-09-30">2003-09-30</option>    <option  value="2003-10-31">2003-10-31</option>    <option  value="2003-11-28">2003-11-28</option>    <option  value="2003-12-31">2003-12-31</option>    <option  value="2004-01-30">2004-01-30</option>    <option  value="2004-02-27">2004-02-27</option>    <option  value="2004-03-31">2004-03-31</option>    <option  value="2004-04-30">2004-04-30</option>    <option  value="2004-05-28">2004-05-28</option>    <option  value="2004-06-30">2004-06-30</option>    <option  value="2004-07-30">2004-07-30</option>    <option  value="2004-08-31">2004-08-31</option>    <option  value="2004-09-30">2004-09-30</option>    <option  value="2004-10-29">2004-10-29</option>    <option  value="2004-11-30">2004-11-30</option>    <option  value="2004-12-31">2004-12-31</option>    <option  value="2005-01-31">2005-01-31</option>    <option  value="2005-02-28">2005-02-28</option>    <option  value="2005-03-31">2005-03-31</option>    <option  value="2005-04-29">2005-04-29</option>    <option  value="2005-05-31">2005-05-31</option>    <option  value="2005-06-30">2005-06-30</option>    <option  value="2005-07-29">2005-07-29</option>    <option  value="2005-08-31">2005-08-31</option>    <option  value="2005-09-30">2005-09-30</option>    <option  value="2005-10-31">2005-10-31</option>    <option  value="2005-11-30">2005-11-30</option>    <option  value="2005-12-30">2005-12-30</option>    <option  value="2006-01-31">2006-01-31</option>    <option  value="2006-02-28">2006-02-28</option>    <option  value="2006-03-31">2006-03-31</option>    <option  value="2006-04-28">2006-04-28</option>    <option  value="2006-05-31">2006-05-31</option>    <option  value="2006-06-30">2006-06-30</option>    <option  value="2006-07-31">2006-07-31</option>    <option  value="2006-08-31">2006-08-31</option>    <option  value="2006-09-29">2006-09-29</option>    <option  value="2006-10-31">2006-10-31</option>    <option  value="2006-11-30">2006-11-30</option>    <option  value="2006-12-29">2006-12-29</option>    <option  value="2007-01-31">2007-01-31</option>    <option  value="2007-02-28">2007-02-28</option>    <option  value="2007-03-30">2007-03-30</option>    <option  value="2007-04-30">2007-04-30</option>    <option  value="2007-05-31">2007-05-31</option>    <option  value="2007-06-29">2007-06-29</option>    <option  value="2007-07-31">2007-07-31</option>    <option  value="2007-08-31">2007-08-31</option>    <option  value="2007-09-28">2007-09-28</option>    <option  value="2007-10-31">2007-10-31</option>    <option  value="2007-11-30">2007-11-30</option>    <option  value="2007-12-31">2007-12-31</option>    <option  value="2008-01-31">2008-01-31</option>    <option  value="2008-02-29">2008-02-29</option>    <option  value="2008-03-31">2008-03-31</option>    <option  value="2008-04-30">2008-04-30</option>    <option  value="2008-05-30">2008-05-30</option>    <option  value="2008-06-30">2008-06-30</option>    <option  value="2008-07-31">2008-07-31</option>    <option  value="2008-08-29">2008-08-29</option>    <option  value="2008-09-30">2008-09-30</option>    <option  value="2008-10-31">2008-10-31</option>    <option  value="2008-11-28">2008-11-28</option>    <option  value="2008-12-31">2008-12-31</option>    <option  value="2009-01-30">2009-01-30</option>    <option  value="2009-02-27">2009-02-27</option>    <option  value="2009-03-31">2009-03-31</option>    <option  value="2009-04-30">2009-04-30</option>    <option  value="2009-05-29">2009-05-29</option>    <option  value="2009-06-30">2009-06-30</option>    <option  value="2009-07-31">2009-07-31</option>    <option  value="2009-08-31">2009-08-31</option>    <option  value="2009-09-30">2009-09-30</option>    <option  value="2009-10-30">2009-10-30</option>    <option  value="2009-11-30">2009-11-30</option>    <option  value="2009-12-31">2009-12-31</option>    <option  value="2010-01-29">2010-01-29</option>    <option  value="2010-02-26">2010-02-26</option>    <option  value="2010-03-31">2010-03-31</option>    <option  value="2010-04-30">2010-04-30</option>    <option  value="2010-05-28">2010-05-28</option>    <option  value="2010-06-30">2010-06-30</option>    <option  value="2010-07-30">2010-07-30</option>    <option  value="2010-08-31">2010-08-31</option>    <option  value="2010-09-30">2010-09-30</option>    <option  value="2010-10-29">2010-10-29</option>    <option  value="2010-11-30">2010-11-30</option>    <option  value="2010-12-31">2010-12-31</option>    <option  value="2011-01-31">2011-01-31</option>    <option  value="2011-02-28">2011-02-28</option>    <option  value="2011-03-31">2011-03-31</option>    <option  value="2011-04-29">2011-04-29</option>    <option  value="2011-05-31">2011-05-31</option>    <option  value="2011-06-30">2011-06-30</option>    <option  value="2011-07-29">2011-07-29</option>    <option  value="2011-08-31">2011-08-31</option>    <option  value="2011-09-30">2011-09-30</option>    <option  value="2011-10-31">2011-10-31</option>    <option  value="2011-11-30">2011-11-30</option>    <option  value="2011-12-30">2011-12-30</option>    <option  value="2012-01-31">2012-01-31</option>    <option  value="2012-02-29">2012-02-29</option>    <option  value="2012-03-30">2012-03-30</option>    <option  value="2012-04-30">2012-04-30</option>    <option  value="2012-05-31">2012-05-31</option>    <option  value="2012-06-29">2012-06-29</option>    <option  value="2012-07-31">2012-07-31</option>    <option  value="2012-08-31">2012-08-31</option>    <option  value="2012-09-28">2012-09-28</option>    <option  value="2012-10-31">2012-10-31</option>    <option  value="2012-11-30">2012-11-30</option>    <option  value="2012-12-31">2012-12-31</option>    <option  value="2013-01-31">2013-01-31</option>    <option  value="2013-02-28">2013-02-28</option>    <option  value="2013-03-28">2013-03-28</option>    <option  value="2013-04-30">2013-04-30</option>    <option  value="2013-05-31">2013-05-31</option>    <option  value="2013-06-28">2013-06-28</option>    <option  value="2013-07-31">2013-07-31</option>    <option  value="2013-08-30">2013-08-30</option>    <option  value="2013-09-30">2013-09-30</option>    <option  value="2013-10-31">2013-10-31</option>    <option  value="2013-11-29">2013-11-29</option>    <option  value="2013-12-31">2013-12-31</option>    <option  value="2014-01-31">2014-01-31</option>    <option  value="2014-02-28">2014-02-28</option>    <option  value="2014-03-31">2014-03-31</option>    <option selected="selected" value="2014-04-30">2014-04-30</option> </select>
+
+</h3>
+</form>
+
+  <div id="risk-table">
+  </div>
+
+</div>
+    
+<div id="risk-right">
+
+<h3>Plot Options</h3>
+
+<form action="#">
+    <p>
+  <input type="hidden" id="ser" name="ser" value="1" />
+  <input type="hidden" id="var" name="var" value="mes" />
+    </p>
+<table>
+
+  <!-- <tr>
+    <td><input type="radio" id="rvar-rcs" name="rvar" value="rcs" onclick="imgReplace('var', 'rcs')" /></td>
+    <td><label for="rvar-rcs">SRISK%</label></td>
+  </tr> -->
+
+  <tr>
+    <td><input type="radio" id="rvar-cs" name="rvar" value="cs" onclick="imgReplace('var', 'cs')"  /></td>
+    <td><label for="rvar-cs">SRISK</label></td>
+  </tr>
+
+  <tr>
+    <td><input type="radio" id="rvar-mes" name="rvar" value="mes" onclick="imgReplace('var', 'mes')" checked="checked" /></td>
+    <td><label for="rvar-mes">MES</label></td>
+  </tr>
+
+  <tr>
+    <td><input type="radio" id="rvar-beta" name="rvar" value="beta" onclick="imgReplace('var', 'beta')" /></td>
+    <td><label for="rvar-beta">Beta</label></td>    
+  </tr>
+  <tr>
+    <td><input type="radio" id="rvar-cor" name="rvar" value="cor" onclick="imgReplace('var', 'cor')" /></td>
+    <td><label for="rvar-cor">Correlation</label></td>    
+  </tr>
+  <tr>
+    <td><input type="radio" id="rvar-vol" name="rvar" value="vol" onclick="imgReplace('var', 'vol')" /></td>
+    <td><label for="rvar-vol">Volatility</label></td>   
+  </tr>
+  <tr>
+    <td><input type="radio" id="rvar-lvg" name="rvar" value="lvg" onclick="imgReplace('var', 'lvg')" /></td>
+    <td><label for="rvar-lvg">Leverage</label></td>   
+  </tr>
+
+</table>
+
+</form>
+
+<h3>Display Options</h3>
+
+<table cellpadding="0">
+  <tr>
+               <td>Firms to display:</td>
+         <td><input id="numfirms" size="2" value="0" style="text-align: center;" /></td>
+  </tr>
+</table>
+
+<h3></h3>
+
+<form action="#">
+
+<table id="regiontable">
+    <tr>
+      <th></th>
+      <th>Region&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+      <th colspan="2">Capital Req</th>
+    </tr>
+  <tr>
+    <td><input type="radio" id="continent-americas" name="continent" value="americas" onclick="changeRegion('americas'); get_rl_data();" checked="checked"/></td>
+    <td><label for="continent-americas">Americas</label></td>
+    <td><input id="capreq-americas" class='capreq-spinner' value="0.08" style="text-align: center;" /></td>
+  </tr>
+</table>
+
+<div>
+<span id="country-select-span">
+<label for="country-select">Country: </label>
+<select id="country-select" onchange="process_rl_data_static();">
+  <option value="All">All</option>
+</select>
+</span>
+</div>
+</form>
+</div>
+    
+
+<div style="clear: both">
+</div>
+
+
+</div>
+
+<div id="footer">
+        <a href="http://vlab.stern.nyu.edu/sendComments" onclick="return loadCommentForm(this)">  Send Comments to V-Lab  </a><br />
+  V-Lab version: 2.4.9<br />
+  Information is provided 'as is' and solely for informational purposes, not for trading purposes or advice. <a href="javascript:helpPage('legal_provisions');">Additional Provisions</a>
+</div>
+
+</div>
+</div>
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>Created by Ayesha Bose and Hanwen Xu, under Andrew W. Lo.</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/illiq_viz.js"></script>
+</body>
+</html>
