@@ -6,7 +6,29 @@ Created on Apr 16, 2014
 import MySQLdb
 import pickle
 from DatabaseFiller.DatabaseTools import addMonths
-IPADDR = "18.189.104.232"
+IPADDR = "18.189.115.34"
+
+def loadMoodyData():
+    db = MySQLdb.connect(host = IPADDR, port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
+    cursor = db.cursor()
+    cursor.execute("truncate rawdata.corp_def_hist")
+    db.commit()
+    sqlQuery1 = "LOAD DATA LOCAL INFILE 'DFLT_HIST.csv' INTO TABLE rawdata.corp_def_hist fields terminated by ','"
+    cursor.execute(sqlQuery1)
+    db.commit()
+    db.close()
+
+def getMoodyData():
+    db = MySQLdb.connect(host = IPADDR, port = 3306, user = "guest", passwd = "guest123", db = "rawdata")
+    cursor = db.cursor()
+    sqlQuery1 = "Select DEF_DATETIME from rawdata.corp_def_hist order by DEF_DATETIME"
+    cursor.execute(sqlQuery1)
+    results = cursor.fetchall()
+    db.close()
+    output = []
+    for r in results[1:]:
+        output.append(r[0])
+    return output
 
 
 '''
@@ -39,7 +61,8 @@ def getNames(endDate, inst=['brokers', 'banks', 'insurers', 'hedgefunds'], windo
     
     if startDate=="":
         startDate = addMonths(endDate, -1*window-1)
-    
+    else:
+        window = (endDate.year-startDate.year)*12 + endDate.month - startDate.month
     
     #store the ticker and common name for stocks, 
     #store the hedge fund ID and asset value for hedge funds
