@@ -17,4 +17,6 @@ urlpatterns = patterns('',
 	url(r'illiq_viz/data/$', views.aggIlliq_data),
 	url(r'other/$', TemplateView.as_view(template_name='dashboard/other.html')),
 	url(r'mems/$', TemplateView.as_view(template_name='dashboard/mems.html')),
+	url(r'B1months/$', TemplateView.as_view(template_name='dashboard/B1months.html')),
+	url(r'B1months/data/$', views.B1Months_data),
 )
