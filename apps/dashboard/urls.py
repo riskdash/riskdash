@@ -19,4 +19,6 @@ urlpatterns = patterns('',
 	url(r'mems/$', TemplateView.as_view(template_name='dashboard/mems.html')),
 	url(r'B1months/$', TemplateView.as_view(template_name='dashboard/B1months.html')),
 	url(r'B1months/data/$', views.B1Months_data),
+	url(r'B1/$', TemplateView.as_view(template_name='dashboard/B1.html')),
+	url(r'B1/data/$', views.B1defIntensity_data),
 )

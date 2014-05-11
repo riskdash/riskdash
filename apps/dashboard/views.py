@@ -2,7 +2,7 @@ import json
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse
-from apps.dashboard.models import SumStatistics, CumRF, GrangerCausalityConn, GrangerRan, Qstatswithpvals, AggIlliq, B1Months
+from apps.dashboard.models import SumStatistics, CumRF, GrangerCausalityConn, GrangerRan, Qstatswithpvals, AggIlliq, B1Months, B1defIntensity
 
 def returns_stats(request):	
 	stats = SumStatistics.objects.all()
@@ -71,6 +71,12 @@ def aggIlliq_data(request):
 
 def B1Months_data(request):
 	points = B1Months.objects.all()
+	data = [ {'date': p.date, 'price': p.val} for p in points]
+
+	return HttpResponse(json.dumps(data), mimetype='application/json')
+
+def B1defIntensity_data(request):
+	points = B1defIntensity.objects.all()
 	data = [ {'date': p.date, 'price': p.val} for p in points]
 
 	return HttpResponse(json.dumps(data), mimetype='application/json')

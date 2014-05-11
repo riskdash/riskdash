@@ -47,20 +47,20 @@
         <div class="span10">
           <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
-            <li class="active"><a href="/B1months">Defaults per Month</a></li>
+            <li class="active"><a href="/B1months">Default Intensity</a></li>
           </ol>
         <ul class="nav nav-tabs">
-          <li class="active"><a href="/B1months/">Defaults per Month</a></li>
-          <li><a href="/B1">Default Intensity</a></li>
+          <li><a href="/B1months/">Defaults per Month</a></li>
+          <li class="active"><a href="/B1">Default Intensity</a></li>
         </ul>
 
         <div class="tab-content">
           <div class="tab-pane active" id="agg-ill">
-              <h1>Defaults per Month</h1>
+              <h1>Default Intensity</h1>
                 <h5> <i>Select an area from the lower graph to focus in on an area.</i> </h5>
                 <hr>
-                <h4><b> From 1970 to 2014 </b></h4>
-                <div id="chart4"></div>
+                <h4><b> From 1970-01-01 to 2014-05-10 </b></h4>
+                <div id="def-chart"></div>
           </div>
         </div>
 
@@ -75,6 +75,6 @@
 
     </div><!--/.fluid-container-->
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/b1months_viz.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/b1_viz.js"></script>
 </body>
 </html>
