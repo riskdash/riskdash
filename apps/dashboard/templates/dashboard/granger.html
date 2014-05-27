@@ -6,10 +6,12 @@
         <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet" media="screen">
         <!--<link href="{{ STATIC_URL }}css/main.css" rel="stylesheet" media="screen">-->
         <link href="{{ STATIC_URL }}css/index.css" rel="stylesheet" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/simple-slider.css"/>
+        <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/granger_viz.css"/>
 
         <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
-        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 </head>
 
 <body>        
@@ -76,7 +78,13 @@
               <h5> <i>Each line represents a statistically significant relationship between two institutions.</i> </h5>
               <hr>
               <!---<h4><b> From 2013-12-31 </b></h4>-->
-                {% include "dashboard/granger_viz.html" %}
+              <div class="span5">
+                    {% include "dashboard/granger_viz_left.html" %}
+              </div>
+              <div class="span5">
+                    {% include "dashboard/granger_viz_right.html" %}
+              </div>
+                  
           </div>
         </div>
         </div><!--/span-->
@@ -89,5 +97,8 @@
       </footer>
 
     </div><!--/.fluid-container-->
+    <script type="text/javascript" src="{{ STATIC_URL }}js/packages.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/simple-slider.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/granger_viz.js"></script>
 </body>
 </html>
