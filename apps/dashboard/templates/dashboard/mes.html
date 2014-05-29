@@ -4,14 +4,14 @@
         <title>Systemic Risk Dashboard</title>
         <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" media="screen">
         <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet" media="screen">
-
+        <!--<link href="{{ STATIC_URL }}css/main.css" rel="stylesheet" media="screen">-->
         <link href="{{ STATIC_URL }}css/index.css" rel="stylesheet" media="screen">
         <link href="{{ STATIC_URL }}css/jquery.thumbs.css" rel="stylesheet" media="screen">
-
-        
 </head>
 
 <body>        
+<body>
+
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="navbar-inner">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -32,30 +32,61 @@
         <div class="span2">
           {% include "dashboard/nav-cross.html" %}
         </div>
-
         <div class="span10">
-          <div class="hero-unit">
-            <h1> Marginal and Systemic Expected Shortfall: </h1>
-            <br>
-            <br>
-            <a href="http://vlab.stern.nyu.edu/analysis/RISK.USFIN-MR.MES" class="thumb"><img src="{{ STATIC_URL }}images/nyu.png" alt="NYU Stern V-Lab"/></a>
+          <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/granger">Cross-sectional Measures</a></li>
+            <li class="active"><a href="/granger">Marginal and Systemic Expected Shortfall</a></li>
+          </ol>
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="/mes">MES</a></li>
+        </ul>
+
+        <div class="tab-content">
+          
+          <!---<div class="tab-pane" id="stats">
+              <h1>Summary Statistics for asset-weighted autocorrelations 
+                <br>
+                and linear Granger-causality relationships</h1>
+              <h4> <i>At the 5% level of statiscial significance </i> </h4>
+              {% include "dashboard/time_range.html" %}
+              {% include "dashboard/granger_stats.html" %}
+          </div>
+          <div class="tab-pane" id="conns">
+              <h1>Number of connections as a percentage of all possible connections.</h1>
+              <h4> <i>At the 5% level of statiscial significance </i> </h4>
+                {% include "dashboard/time_range.html" %}
+                {% include "dashboard/pca_viz.html" %}
+          </div>-->
+          <div class="tab-pane active" id="diagrams">
+              <h1>Marginal and Systemic Expected Shortfall</h1>
+              <hr>
+              <h4> This work is based on <a href="http://vlab.stern.nyu.edu/public/static/capital_shortfall-2012.pdf">Acharya, Engle, and Richardson, 2012, "Capital Shortfall: A New Approach to Ranking and Regulating Systemic Risks".</a> </h4>
+              <hr>
+              <h3> <i> The financial crisis of 2007-2009 has given way to the sovereign debt crisis of 2010-2012, yet many of the banking issues remain the same. This method estimates the capital that a financial firm would need to raise in case of another financial crisis. This measure summarizes the major characteristics of systemic risk and provides a reliable interpretation of the past and current financial crisis.  </i></h3>
+              <hr>
+              <h4> <i>Click the thumbnail below to be taken to the NYU website. </i> </h4>
+              <hr>
+              <a href="http://vlab.stern.nyu.edu/analysis/RISK.USFIN-MR.MES" class="thumb" target="_blank" style:"text-align:center"><img src="/static/images/nyu.png" alt="NYU Stern V-Lab"/></a>
+                  
           </div>
         </div>
-      </div>
-      
+        </div><!--/span-->
+      </div><!--/row-->
+
       <hr>
+
       <footer>
         <p>Created by Ayesha Bose and Hanwen Xu, under Professor Andrew Lo, with the assistance of Professor Roger Stein, Jian Helen Yang, and Tom Hughes</p>
       </footer>
 
     </div><!--/.fluid-container-->
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.thumbs.js"></script>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $(".thumb").thumbs();
-  });
-</script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.thumbs.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $(".thumb").thumbs();
+      });
+    </script>
 </body>
 </html>
