@@ -1,11 +1,11 @@
 var g = new JustGage({
 id: "liquidity-gauge", 
-value: 35, 
+value: 14.98, 
 min: 0,
 max: 100,
 title: "Liquidity",
 showMinMax:false,
-label: "Updated: 3 Apr 2014 16:30:00 GMT",
+label: "Updated: 28 Feb 2014",
 relativeGaugeSize: true,
 levelColorsGradient: false
 }); 
