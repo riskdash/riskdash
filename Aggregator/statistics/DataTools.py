@@ -5,7 +5,7 @@ Created on Apr 16, 2014
 '''
 import MySQLdb
 import pickle
-from DatabaseFiller.DatabaseTools import addMonths
+from DatabaseTools import addMonths
 IPADDR = "18.189.115.34"
 
 def loadMoodyData():

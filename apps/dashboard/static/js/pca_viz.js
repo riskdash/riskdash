@@ -1,13 +1,9 @@
-$(function() {
-
-  $.getJSON('/pca/data/', function(data) {
+  $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function(data) {
     // Create the chart
-    $('#chart').highcharts('StockChart', {
-      
-
+    $('#container').highcharts('StockChart', {     
       rangeSelector : {
         selected : 1,
-        inputEnabled: $('#chart').width() > 480
+        inputEnabled: $('#container').width() > 480
       },
 
       title : {
@@ -23,5 +19,3 @@ $(function() {
       }]
     });
   });
-
-});

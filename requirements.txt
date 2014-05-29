@@ -5,5 +5,6 @@ django-toolbelt==0.0.1
 djangotoolbox==1.6.2
 gunicorn==18.0
 psycopg2==2.5.2
+pytz==2013.7
 wsgiref==0.1.2
 jsonfield==0.9.20

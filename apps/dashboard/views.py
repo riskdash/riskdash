@@ -48,7 +48,7 @@ def returns_stats(request):
 
 def crf_data(request):
 	points = CumRF.objects.all()
-	data = [ {'date': p.date, 'price': p.frac} for p in points]
+	data = [[p.date, p.frac] for p in points]
 
 	return HttpResponse(json.dumps(data), mimetype='application/json')
 

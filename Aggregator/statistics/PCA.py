@@ -10,7 +10,7 @@ import datetime as dt
 import matplotlib.pyplot as plt
 from DataTools import getNames
 import pickle, sys
-from DatabaseFiller.DatabaseTools import addMonths
+from DatabaseTools import addMonths
 
 '''
 for the given index names and time window, calculates the eigVal and eigVectors
