@@ -4,7 +4,6 @@
 	<title>Systemic Risk Dashboard</title>
 	<link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" media="screen">
 	<link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet" media="screen">
-	<!--<link href="{{ STATIC_URL }}css/main.css" rel="stylesheet" media="screen">-->
 	<link href="{{ STATIC_URL }}css/index.css" rel="stylesheet" media="screen">
 	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/simple-slider.css"/>
 	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/granger_viz.css"/>
@@ -51,21 +50,19 @@
 						<h1>Macroprudential EWIs from Credit, Property, and Market Gaps</h1>
 						<hr>
 						<h3><i>
-						Something about the fact that we want a macroprudential approach and measurement tool for risk management as opposed to a more myopic and microprudential approach.
+						Borio (2009) constructed a macroeconomic early warning indicator framework to predict banking sector crises using the property price gap, the (real) equity price gap, and the credit gap.  The authors argue that the existence of unusally rapid credit growth and asset prices indicate the build-up of financial imbalances that raise the likelihood of subsequent financial distress.
 						</i></h3>
-						<hr>
-						<h5> <i>Select an area from the lower graph to focus in on an area.</i> </h5>
 						<hr>
 
 					</div>
 					<!-- start javascript for visualization -->
-						<div id="container" style="height: 800px; min-width: 6000px; max-width: 1400px">
+						<div id="container" style="min-height: 600px; min-width: 1300px">
 							<span id="credit_gap"></span>
 
 							<span id="property_gap"></span>
 
 							<span id="market_gap"></span>
-						</div>
+						</span>
 					<!-- end javascript for visualization -->
 					</div>
 				</div>
@@ -82,6 +79,6 @@
 	</div><!--/.fluid-container-->
 
 
-	<!--<script type="text/javascript" src="{{ STATIC_URL }}js/ewi_gap.js"></script>-->
+	<script type="text/javascript" src="{{ STATIC_URL }}js/macro_gap.js"></script>
 </body>
 </html>
