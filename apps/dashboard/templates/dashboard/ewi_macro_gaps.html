@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head>
+	<title>Systemic Risk Dashboard</title>
+	<link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" media="screen">
+	<link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+	<!--<link href="{{ STATIC_URL }}css/main.css" rel="stylesheet" media="screen">-->
+	<link href="{{ STATIC_URL }}css/index.css" rel="stylesheet" media="screen">
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/simple-slider.css"/>
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/granger_viz.css"/>
+
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+	<script src="http://code.highcharts.com/stock/highstock.js"></script>
+	<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+</head>
+
+<body>
+
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="navbar-inner">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">Systemic Risk Dashboard</a>
+			<a class="navbar-brand" href="/about/">About</a>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="alert alert-warning alert-dismissable">
+			<strong>Note: </strong> This website is still under construction.
+		</div>
+		<div class="row-fluid">
+			<div class="span2">
+				{% include "dashboard/nav-macroeconomic.html" %}
+			</div>
+			<div class="span10">
+				<ol class="breadcrumb">
+					<li><a href="/">Home</a></li>
+					<li class="active"><a href="/noise_liquidity">Early Warning Indicators</a></li>
+				</ol>
+
+
+				<div class="tab-content">
+					<div class="tab-pane active" id="agg-ill">
+						<h1>Macroprudential EWIs from Credit, Property, and Market Gaps</h1>
+						<hr>
+						<h3><i>
+						Something about the fact that we want a macroprudential approach and measurement tool for risk management as opposed to a more myopic and microprudential approach.
+						</i></h3>
+						<hr>
+						<h5> <i>Select an area from the lower graph to focus in on an area.</i> </h5>
+						<hr>
+
+					</div>
+					<!-- start javascript for visualization -->
+						<div id="container" style="height: 800px; min-width: 6000px; max-width: 1400px">
+							<span id="credit_gap"></span>
+
+							<span id="property_gap"></span>
+
+							<span id="market_gap"></span>
+						</div>
+					<!-- end javascript for visualization -->
+					</div>
+				</div>
+
+			</div><!--/span-->
+		</div><!--/row-->
+
+		<hr>
+
+		<footer>
+			<p>Created by ...</p>
+		</footer>
+
+	</div><!--/.fluid-container-->
+
+
+	<!--<script type="text/javascript" src="{{ STATIC_URL }}js/ewi_gap.js"></script>-->
+</body>
+</html>
