@@ -54,8 +54,8 @@ WSGI_APPLICATION = 'riskdash.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME': 'riskdash',
-        'USER': 'riskdash',
+        'NAME': 'postgres',
+        'USER': 'postgres',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '5432',
