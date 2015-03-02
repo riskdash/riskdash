@@ -2,9 +2,9 @@ min_width = '400px'
 
 // look at https://gist.github.com/femto113/1784503 to find out how to transpose data arrays so that we can parse a csv with multiple countries' data
 
-d3.text('/static/data/A2_credit_gap.csv', function(unparsedData) {
+d3.text('/static/data/A2_UScreditgaps.csv', function(unparsedData) {
 	var data = d3.csv.parse(unparsedData, function(d) {
-		return [+d.year, +d.credit_gap];
+		return [+d.time, +d.data];
 	});
 
 	// Create the chart
@@ -18,7 +18,7 @@ d3.text('/static/data/A2_credit_gap.csv', function(unparsedData) {
 		},
 
 		series : [{
-			name : 'Credit Gap',
+			name : 'US Credit Gap',
 			data : data,
 			tooltip: {
 				valueDecimals: 2
@@ -28,9 +28,9 @@ d3.text('/static/data/A2_credit_gap.csv', function(unparsedData) {
 
 });
 
-d3.text('/static/data/A2_property_gap.csv', function(unparsedData) {
+d3.text('/static/data/A2_USpropertygaps.csv', function(unparsedData) {
 	var data = d3.csv.parse(unparsedData, function(d) {
-		return [+d.year, +d.property_gap];
+		return [+d.time, +d.data];
 	});
 
 	// Create the chart
@@ -53,9 +53,9 @@ d3.text('/static/data/A2_property_gap.csv', function(unparsedData) {
 	});
 });
 
-d3.text('/static/data/A2_market_gap.csv', function(unparsedData) {
+d3.text('/static/data/A2_USmarketgaps.csv', function(unparsedData) {
 	var data = d3.csv.parse(unparsedData, function(d) {
-		return [+d.year, +d.market_gap];
+		return [+d.time, +d.data];
 	});
 
 	// Create the chart
